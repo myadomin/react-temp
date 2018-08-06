@@ -10,7 +10,7 @@ function resolve(relatedPath) {
 
 const webpackConfigBase = {
   entry: {
-    // 入口文件
+    // 入口文件1
     client: resolve('../app/client.js'),
   },
   output: {
