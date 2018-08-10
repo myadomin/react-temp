@@ -20,7 +20,7 @@ const webpackConfigProd = {
     }),
     // 将打包后的资源注入到html文件内 
     new HtmlWebpackPlugin({
-      template: resolve('../app/index.html'),
+      template: resolve('../src/index.html'),
       mapConfig:'http://41.196.99.30/tgram-pgisbase/config/qdkjdsj_map_config.js'      
     }),
     // 提取css
@@ -29,12 +29,7 @@ const webpackConfigProd = {
     /* 压缩优化代码开始*/
     new webpack.optimize.UglifyJsPlugin({ minimize: true }),
     // 分析代码
-    new BundleAnalyzerPlugin({ analyzerPort: 3011 }),
-    new Copy([
-      { from: './app/images', to: './images' },
-      { from: './app/iconfont', to: './iconfont' },
-      { from: './app/word', to: './word' },
-    ]),
+    new BundleAnalyzerPlugin({ analyzerPort: 3011 })
   ],
 }
 
