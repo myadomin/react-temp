@@ -3,30 +3,22 @@ import { connect } from 'react-redux'
 import { toggleTodo } from '@src/store/todos/action'
 import PropTypes from 'prop-types'
 
-class TodoList extends Component {
-  constructor(props, context) {
-    super(props)
-    this.state = {}
-  }
-
-  render() {
-    const { todos, onTodoClick } = this.props;
-    return (
-      <ul className="item">
-        {todos.map(todo => (
-          <li
-            key={todo.id}
-            onClick={() => onTodoClick(todo.id)}
-            style={ {
-              textDecoration: todo.completed ? 'line-through' : 'none'
-            }}
-          >
-            {todo.text}
-          </li>
-        ))}
-      </ul>
-    )
-  }
+const TodoList = ({ todos, onTodoClick }) => {
+  return (
+    <ul className="item">
+      {todos.map(todo => (
+        <li
+          key={todo.id}
+          onClick={() => onTodoClick(todo.id)}
+          style={ {
+            textDecoration: todo.completed ? 'line-through' : 'none'
+          }}
+        >
+          {todo.text}
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 TodoList.propTypes = {
@@ -54,7 +46,7 @@ const getVisibleTodos = (todos, filter) => {
 
 const mapStateToProps = state => {
   return {
-    todos: getVisibleTodos(state.todos, state.visibilityFilter)
+    todos: getVisibleTodos(state.todos.todoList, state.todos.visibilityFilter)
   }
 }
 

@@ -30,7 +30,7 @@ class Footer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    active: state.visibilityFilter
+    active: state.todos.visibilityFilter
   }
 }
 

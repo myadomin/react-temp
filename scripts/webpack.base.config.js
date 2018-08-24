@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 function resolve(relatedPath) {
   return path.join(__dirname, relatedPath)

@@ -22,16 +22,16 @@ export default class SideBar extends React.Component {
               <span>home</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key="welcome">
-            <Link to="/welcome" replace>
+          <Menu.Item key="todos">
+            <Link to="/todos" replace>
               <Icon type="desktop" />
-              <span>welcome</span>
+              <span>todos</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key="todoDemo">
-            <Link to="/todoDemo" replace>
+          <Menu.Item key="shopcart">
+            <Link to="/shopcart" replace>
               <Icon type="desktop" />
-              <span>todoDemo</span>
+              <span>shopcart</span>
             </Link>
           </Menu.Item>
         </Menu>

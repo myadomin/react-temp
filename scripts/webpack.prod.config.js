@@ -3,7 +3,6 @@ const webpack = require('webpack')
 const path = require('path')
 const merge = require('webpack-merge')
 const webpackConfigBase = require('./webpack.base.config')
-const Copy = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const rimraf = require('rimraf')

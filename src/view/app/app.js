@@ -3,10 +3,8 @@ import './app.styl'
 import { HashRouter, Route } from "react-router-dom";
 import Sidebar from '@src/comp/sideBar/sideBar'
 import Home from '@src/view/home/home'
-import Welcome from '@src/view/welcome/welcome'
-import TodoDemo from '@src/view/todos/todos'
-import { Provider } from 'react-redux'
-import store from '@src/store/store';
+import Todos from '@src/view/todos/todos'
+import Shopcart from '@src/view/shopcart/shopcart'
 
 export default class App extends Component {
   constructor(props, context) {
@@ -17,7 +15,6 @@ export default class App extends Component {
   render() {
     // <BrowserRouter>需要后端支持，<HashRouter>不需要
     return (
-      <Provider store={store}>
       <HashRouter>
         <div className="app-wrap">
           <div className="header">header</div>
@@ -28,13 +25,12 @@ export default class App extends Component {
             <div className="content pull-right">
               <Route exact path="/" component={Home} />
               <Route path="/home" component={Home} />
-              <Route path="/welcome" component={Welcome} />
-              <Route path="/todoDemo" component={TodoDemo} />
+              <Route path="/todos" component={Todos} />
+              <Route path="/shopcart" component={Shopcart} />
             </div>
           </div>
         </div>
       </HashRouter>
-      </Provider>
     )
   }
 }
