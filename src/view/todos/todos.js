@@ -5,12 +5,12 @@ import TodoList from './todoList'
 import './todos.styl'
 
 export default class TodoDemo extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props)
     this.state = {}
   }
 
-  render() {
+  render () {
     return (
       <div className="todos-wrap">
         <AddTodo />

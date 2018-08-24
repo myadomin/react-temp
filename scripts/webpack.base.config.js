@@ -8,7 +8,7 @@ function resolve(relatedPath) {
 const webpackConfigBase = {
   entry: {
     // vendor
-    vendor: ["react","react-dom", "redux", "react-redux", "react-router-redux"],
+    vendor: ["react","react-dom", "redux", "react-redux"],
     // 入口文件
     main: resolve('../src/main.js')
   },
@@ -28,6 +28,11 @@ const webpackConfigBase = {
         test: /\.js[x]?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.js$/,
+        include: [resolve('../src')],
+        loaders: ['eslint-loader']
       },
       {
         test: /\.css$/,

@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Menu, Icon } from 'antd';
-import { Link } from "react-router-dom";
+import { Menu, Icon } from 'antd'
+import { Link } from 'react-router-dom'
 
 export default class SideBar extends React.Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props)
     this.state = {}
   }
 
-  render() {
+  render () {
     return (
       <div>
         <Menu
@@ -36,6 +36,6 @@ export default class SideBar extends React.Component {
           </Menu.Item>
         </Menu>
       </div>
-    );
+    )
   }
 }

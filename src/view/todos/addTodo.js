@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { addTodo } from '@src/store/todos/action'
 
 class AddTodo extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props)
     this.state = {}
   }
 
-  render() {
+  render () {
     const { dispatch } = this.props
     let input
     return (

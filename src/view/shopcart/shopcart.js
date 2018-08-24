@@ -5,7 +5,7 @@ import { getAllProducts } from '@src/store/shopcart/actions'
 import CartContainer from './containers/CartContainer'
 
 class Shopcart extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props)
     this.state = {}
   }
@@ -14,7 +14,7 @@ class Shopcart extends Component {
     this.props.dispatch(getAllProducts())
   }
 
-  render() {
+  render () {
     return (
       <div>
         <h2>Shopping Cart Example</h2>

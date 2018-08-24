@@ -3,24 +3,24 @@ import { connect } from 'react-redux'
 import { setVisibilityFilter } from '@src/store/todos/action'
 
 class Footer extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props)
     this.state = {}
   }
 
-  render() {
+  render () {
     const { active, onClick } = this.props
     const filterArr = ['SHOW_ALL', 'SHOW_ACTIVE', 'SHOW_COMPLETED']
     return (
       <p className="item">
-        Show: 
+        Show:
         {filterArr.map((v) => {
           return (
             <a href="" key={v} className={active === v ? 'active' : ''}
-            onClick={e => {
-              e.preventDefault()
-              onClick(v)
-            }}>{v}, </a>
+              onClick={e => {
+                e.preventDefault()
+                onClick(v)
+              }}>{v}, </a>
           )
         })}
       </p>

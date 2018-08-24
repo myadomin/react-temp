@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
 const todoList = (state = [], action) => {
   switch (action.type) {
@@ -13,9 +13,7 @@ const todoList = (state = [], action) => {
       ]
     case 'TOGGLE_TODO':
       return state.map(todo =>
-        (todo.id === action.id) 
-          ? {...todo, completed: !todo.completed}
-          : todo
+        (todo.id === action.id) ? {...todo, completed: !todo.completed} : todo
       )
     default:
       return state
@@ -34,4 +32,3 @@ const visibilityFilter = (state = 'SHOW_ALL', action) => {
 const todos = combineReducers({todoList, visibilityFilter})
 
 export default todos
-

@@ -10,9 +10,9 @@ const ProductsContainer = ({ products, addToCart }) => {
       <h3 style={{marginBottom: '20px'}}>Products</h3>
       {products.map(product =>
         <ProductItem
-        key={product.id}
-        product={product}
-        onAddToCartClicked={() => addToCart(product.id)} />
+          key={product.id}
+          product={product}
+          onAddToCartClicked={() => addToCart(product.id)} />
       )}
     </div>
   )

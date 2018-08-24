@@ -36,11 +36,11 @@ const getCartProducts = state => {
 }
 const getTotal = state => {
   return state.shopcart.cart.addedIds
-  .reduce((total, id) =>
-    total + state.shopcart.products.byId[id].price * (state.shopcart.cart.quantityById[id] || 0),
+    .reduce((total, id) =>
+      total + state.shopcart.products.byId[id].price * (state.shopcart.cart.quantityById[id] || 0),
     0
-  )
-  .toFixed(2)
+    )
+    .toFixed(2)
 }
 
 const mapDispatchToProps = dispatch => {
