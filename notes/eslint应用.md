@@ -1,42 +1,60 @@
 ### eslint 应用
-1. `npm --save-dev install eslint`然后`npm --save-dev install eslint-loader`
-2. 配置`eslint-loader`
+* 安装 eslint及eslint-loader
+* 配置 eslint-loader
 ```
 // webpack.base.config.js
 module: {
   loaders: [
     {
-      test: /\.js[x]?$/,
-      exclude: /node_modules/,
-      use: ['babel-loader']
-    },
-    {
-      test: /\.js$/,
-      // 只检测src文件夹下面的js
+      test: /\.(js|vue)$/,
+      // 只有src文件用eslint-loader
       include: [resolve('../src')],
-      loaders: ['eslint-loader']
+      // *一定要加这个 否则检测不到*
+      enforce: 'pre',
+      use: [{
+        loader: 'eslint-loader',
+        options: {
+          // 不符合Eslint规则时只console warning(默认false 直接console error)
+          // emitWarning: true
+        }
+      }]
     },
     ....
   ]
 },
 ```
-3. 根目录新建.eslintrc.js
+* 安装 
+```
+react需要安装 
+"babel-eslint": "^8.2.6",
+"eslint-config-standard": "~11.0.0",
+"eslint-plugin-import": "~2.8.0",
+"eslint-plugin-jsx-a11y": "~6.0.3",
+"eslint-plugin-node": "^5.2.0",
+"eslint-plugin-promise": "^3.4.0",
+"eslint-plugin-react": "~7.5.1",
+"eslint-plugin-standard": "^3.0.1",
+vue需要安装
+"babel-eslint": "^7.1.1",
+"eslint-config-standard": "^10.2.1",
+"eslint-plugin-html": "^3.0.0",
+"eslint-plugin-import": "^2.7.0",
+"eslint-plugin-node": "^5.2.0",
+"eslint-plugin-promise": "^3.4.0",
+"eslint-plugin-standard": "^3.0.1",
+```
+* 根目录新建 .eslintrc.js
 ```
 // .eslintrc.js
 module.exports = {
-  // 需要安装 babel-eslint
+  // eslint找当前配置文件不再往父级查找
+  "root": true, 
+  "extends": "standard",
   "parser": "babel-eslint",
-  // 需要安装 eslint-config-standard eslint-plugin-promise
-  // eslint-plugin-node eslint-plugin-import eslint-plugin-jsx-a11y
-  // 如果需要 "extends": "airbnb"
-  // 安装 eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y
-  extends": "standard",
-  // 需要安装 eslint-plugin-react
   "plugins": [
-    "react"
+    "react"   // 如果是vue 这里是html
   ],
   "rules": {
-    // 自定义规则
     // 关闭统一换行符，"\n" unix(for LF) and "\r\n" for windows(CRLF)，默认unix
     "linebreak-style": "off",
     // 某些变量未引用不报错
@@ -44,13 +62,19 @@ module.exports = {
   }
 }
 ```
-5. 忽略eslint规则
+* 根目录新建 .eslintignore
+```
+/dist/
+/node_modules/
+/notes/
+```
+* 忽略eslint规则
 ```
 /*eslint-disable*/
 import * as types from '../constants/ActionTypes';
 /*eslint-disable*/
 ```
-6. vscode设置
+* vscode设置
 ```
 { 
   // 保存自动修正
@@ -58,9 +82,14 @@ import * as types from '../constants/ActionTypes';
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    "html",
-    // vue文件需要
-    { "language": "vue", "autoFix": true }
+    {
+      "language": "html",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    }
   ]
   ......
 }

@@ -7,7 +7,7 @@ const Copy = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-function resolve(relatedPath) {
+function resolve (relatedPath) {
   return path.join(__dirname, relatedPath)
 }
 
@@ -16,21 +16,21 @@ const webpackConfigProd = {
     // 定义环境变量为开发环境
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('testing'),
-      IS_DEVELOPMETN: false,
+      IS_DEVELOPMETN: false
     }),
-    // 将打包后的资源注入到html文件内 
+    // 将打包后的资源注入到html文件内
     new HtmlWebpackPlugin({
       template: resolve('../src/index.html'),
-      mapConfig:'http://41.196.99.30/tgram-pgisbase/config/qdkjdsj_map_config.js'      
+      mapConfig: 'http://41.196.99.30/tgram-pgisbase/config/qdkjdsj_map_config.js'
     }),
     // 提取css
     // 根据入口文件，提取重复引用的公共代码类库，打包到单独文件中
     // new webpack.optimize.OccurenceOrderPlugin(),
-    /* 压缩优化代码开始*/
+    /* 压缩优化代码开始 */
     new webpack.optimize.UglifyJsPlugin({ minimize: true }),
     // 分析代码
     new BundleAnalyzerPlugin({ analyzerPort: 3011 })
-  ],
+  ]
 }
 
 module.exports = merge(webpackConfigBase, webpackConfigProd)

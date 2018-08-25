@@ -7,7 +7,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const rimraf = require('rimraf')
 
-function resolve(relatedPath) {
+function resolve (relatedPath) {
   return path.join(__dirname, relatedPath)
 }
 
@@ -16,19 +16,19 @@ const webpackConfigProd = {
     // 定义环境变量为开发环境
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      IS_DEVELOPMETN: false,
+      IS_DEVELOPMETN: false
     }),
-    // 将打包后的资源注入到html文件内    
+    // 将打包后的资源注入到html文件内
     new HtmlWebpackPlugin({
       template: resolve('../src/index.html'),
-      mapConfig:"http://56.32.3.21/config/qdkjdsj_map_config.js"
+      mapConfig: 'http://56.32.3.21/config/qdkjdsj_map_config.js'
     }),
-    /* 压缩优化代码开始*/
-    new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+    /* 压缩优化代码开始 */
+    new webpack.optimize.UglifyJsPlugin({ minimize: true })
     // 分析代码
     // new BundleAnalyzerPlugin({ analyzerPort: 3011 })
   ],
-  devtool: 'source-map',
+  devtool: 'source-map'
 }
 
 module.exports = merge(webpackConfigBase, webpackConfigProd)

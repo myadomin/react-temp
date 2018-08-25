@@ -1,4 +1,6 @@
 module.exports = {
+  // eslint找当前配置文件不再往父级查找
+  "root": true, 
   "extends": "standard",
   "parser": "babel-eslint",
   "plugins": [
