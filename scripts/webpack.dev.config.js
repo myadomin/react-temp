@@ -13,7 +13,6 @@ const webpackConfigDev = {
   plugins: [
     // 定义环境变量为开发环境
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
       IS_DEVELOPMETN: true
     }),
     // 将打包后的资源注入到html文件内
@@ -24,8 +23,17 @@ const webpackConfigDev = {
     // 控制台打印
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        // package.json cross-env传参
-        messages: [`PROXY_ENV: ${process.env.PROXY_ENV}`],
+        // 传参数的方式
+        // 1 package.json script cross-env PROXY_ENV=dev NODE_ENV=dev 方式传参(需要安装cross-en库)
+        // 传入的参数在这里都可以通过process.env.xx获取(如下面的messages打印) 用于做一些环境判断等
+        // 2 module.exports = merge(webpackConfigBase, webpackConfigDev) 改为下面exports函数
+        // module.exports = (options = {}) => merge(webpackConfigBase, webpackConfigDev)
+        // export对象或者函数给webpack及webpack-dev-server好像都可以？
+        // 在package.json script 设定webpack-dev-server --env.dev(必须是--env.xxxx的格式)
+        // 通过参数options可以得到options.dev=true
+        // 3 上面的 webpack.DefinePlugin 定义的 IS_DEVELOPMETN 在这里拿不到
+        // DefinePlugin 定义的东西只能在业务组件里面拿 相当于在main.js等业务组件里定义了一个IS_DEVELOPMETN全局变量
+        messages: [`PROXY_ENV: ${process.env.PROXY_ENV} -- NODE_ENV: ${process.env.NODE_ENV}`],
         notes: ['Some additionnal notes to be displayed unpon successful compilation']
       },
       onErrors: function (severity, errors) {

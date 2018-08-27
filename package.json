@@ -4,8 +4,8 @@
   "description": "adomin",
   "private": true,
   "scripts": {
-    "start": "cross-env PROXY_ENV=dev webpack-dev-server --config ./scripts/webpack.dev.config.js",
-    "dev": "cross-env PROXY_ENV=dev webpack-dev-server --config ./scripts/webpack.dev.config.js",
+    "start": "cross-env PROXY_ENV=dev NODE_ENV=dev webpack-dev-server --hot --config ./scripts/webpack.dev.config.js",
+    "dev": "cross-env PROXY_ENV=dev NODE_ENV=dev webpack-dev-server --config ./scripts/webpack.dev.config.js",
     "testing": "webpack --config ./scripts/webpack.testing.config.js",
     "build": "rimraf dist && webpack --config ./scripts/webpack.prod.config.js"
   },
