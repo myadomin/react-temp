@@ -33,6 +33,7 @@ const webpackConfigDev = {
         // 通过参数options可以得到options.dev=true
         // 3 上面的 webpack.DefinePlugin 定义的 IS_DEVELOPMETN 在这里拿不到
         // DefinePlugin 定义的东西只能在业务组件里面拿 相当于在main.js等业务组件里定义了一个IS_DEVELOPMETN全局变量
+        // 4 如果在电脑里定义了环境变量XXX 那process.env.XXX的值就是定义的环境变量XXX
         messages: [`PROXY_ENV: ${process.env.PROXY_ENV} -- NODE_ENV: ${process.env.NODE_ENV}`],
         notes: ['Some additionnal notes to be displayed unpon successful compilation']
       },
