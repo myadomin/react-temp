@@ -13,7 +13,6 @@ function resolve (relatedPath) {
 
 const webpackConfigProd = {
   plugins: [
-    // 定义环境变量为开发环境
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('testing'),
       IS_DEVELOPMETN: false

@@ -11,8 +11,10 @@ function resolve (relatedPath) {
 }
 const webpackConfigDev = {
   plugins: [
-    // 定义环境变量为开发环境
     new webpack.DefinePlugin({
+      // react源码入口会判断process.env.NODE_ENV是development还是production做优化处理
+      // 所以DefinePlugin 定义 process.env.NODE_ENV 让react源码及业务组件可以读取到process.env.NODE_ENV
+      'process.env.NODE_ENV': JSON.stringify('development'),
       IS_DEVELOPMETN: true
     }),
     // 将打包后的资源注入到html文件内
