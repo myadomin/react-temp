@@ -1,10 +1,12 @@
 import shop from '../api/shop'
 import * as types from '../constants/ActionTypes'
 
-export const receiveProducts = products => ({
-  type: types.RECEIVE_PRODUCTS,
-  products
-})
+export const receiveProducts = products => {
+  return {
+    type: types.RECEIVE_PRODUCTS,
+    products
+  }
+}
 
 export const addToCart = productId => {
   return {
