@@ -145,6 +145,13 @@ const fetchPosts = postId => {
 }
 ```
 
+### redux-saga
+* call(fn, ...args) 阻塞，fork(fn, ...args) 非阻塞
+* take(acitonType), takeEvery(acitonType, fn), takeLastes(acitonType, fn)
+* put(action)
+* all[fork(fn1), fork(fn2)]
+* select(state => state.xxxx)
+
 ### redux文件组织
 [参考链接](https://blog.csdn.net/sinat_17775997/article/details/57917169)
 * redux官方文件组织
@@ -176,7 +183,7 @@ const fetchPosts = postId => {
 ### react建议学习路线
 * react基础语法，css-in-js (vue有style scope)
 * react-router-dom (对应vue-router)
-* redux->react-redux->redux-thunk/redux-sagas (对应vuex)
+* redux->react-redux->redux-thunk/redux-saga (对应vuex)
 * mobx (替换redux全家桶)
 * reslect->normalizr->immutable (vue只有normalizr)
 * 进阶
