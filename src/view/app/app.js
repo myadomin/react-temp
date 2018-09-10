@@ -13,6 +13,17 @@ export default class App extends Component {
   }
 
   render () {
+    const a = false
+    const abc = {
+      fontSize: '28px',
+      height: '30px',
+      color: '#fff'
+    }
+    const bbb = {
+      fontSize: '18px',
+      height: '30px',
+      color: '#c4a'
+    }
     // <BrowserRouter>需要后端支持，<HashRouter>不需要
     return (
       <HashRouter>
@@ -20,6 +31,7 @@ export default class App extends Component {
           <div className="header">header</div>
           <div className="section">
             <div className="side pull-left">
+              <div style={a ? abc : bbb}>ad</div>
               <Sidebar/>
             </div>
             <div className="content pull-right">
