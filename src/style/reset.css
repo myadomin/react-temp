@@ -56,13 +56,3 @@ li {
 html, body {
 	width: 100%;
 }
-
-[data-role="pull-left"] {
-	float: left
-}
-[data-role="pull-right"] {
-	float: right
-}
-button:disabled {
-	cursor: not-allowed
-}
