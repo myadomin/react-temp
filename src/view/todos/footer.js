@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setVisibilityFilter } from '@src/store/todos/action'
+import style from './todos.css'
 
 class Footer extends Component {
   constructor (props, context) {
@@ -16,7 +17,7 @@ class Footer extends Component {
         Show:
         {filterArr.map((v) => {
           return (
-            <a href="" key={v} className={active === v ? 'active' : ''}
+            <a href="" key={v} className={active === v ? style.active : ''}
               onClick={e => {
                 e.preventDefault()
                 onClick(v)

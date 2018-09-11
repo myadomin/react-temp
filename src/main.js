@@ -2,8 +2,8 @@
 import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from '@src/view/app/app'
-import '@src/style/base.styl'
+import App from '@src/view/app'
+import '@src/style/reset.css'
 import { Provider } from 'react-redux'
 import store from '@src/store/store'
 // 打开 mockjs拦截请求，返回mock数据

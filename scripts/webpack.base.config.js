@@ -43,13 +43,24 @@ const webpackConfigBase = {
         exclude: /node_modules/,
         use: ['babel-loader']
       },
+      // node_modules及/src/style/reset.css不启用css module(因为antd不能用css module), 其他都启用css module
       {
         test: /\.css$/,
+        include: [resolve('../node_modules'), resolve('../src/style/reset.css')],
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.styl$/,
-        use: ['style-loader', 'css-loader', 'stylus-loader']
+        test: /\.css$/,
+        exclude: [resolve('../node_modules'), resolve('../src/style/reset.css')],
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            // css modules支持
+            modules: true,
+            localIdentName: '[name]__[local]__[hash:base64:5]'
+          }
+        }]
       },
       {
         test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,

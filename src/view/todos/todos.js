@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Footer from './footer'
 import AddTodo from './addTodo'
 import TodoList from './todoList'
-import './todos.styl'
 
 export default class TodoDemo extends Component {
   constructor (props, context) {

@@ -41,13 +41,13 @@ const webpackConfigDev = {
       },
       onErrors: function (severity, errors) {
       }
-    }),
-    // 编译完成动态通知是否有error
-    new WebpackNotifierPlugin({
-      title: 'Notify',
-      excludeWarnings: true,
-      skipFirstNotification: true
     })
+    // 编译完成动态通知是否有error
+    // new WebpackNotifierPlugin({
+    //   title: 'Notify',
+    //   excludeWarnings: true,
+    //   skipFirstNotification: true
+    // })
   ],
   // dev环境用eval-source-map prod环境用source-map
   devtool: 'eval-source-map',

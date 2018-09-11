@@ -1,0 +1,13 @@
+/* 启用了css module 其他组件需要用这里的样式 用 composes: pull-left from '../../style/base.css'; */
+[data-role="pull-left"] {
+	float: left
+}
+[data-role="pull-right"] {
+	float: right
+}
+button:disabled {
+	cursor: not-allowed
+}
+
+
+	

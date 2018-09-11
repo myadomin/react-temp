@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import './app.styl'
+import style from './index.css'
 import { HashRouter, Route } from 'react-router-dom'
 import Sidebar from '@src/comp/sideBar/sideBar'
-import Home from '@src/view/home/home'
+import Home from '@src/view/home'
 import Todos from '@src/view/todos/todos'
 import Shopcart from '@src/view/shopcart/shopcart'
 
@@ -13,28 +13,16 @@ export default class App extends Component {
   }
 
   render () {
-    const a = false
-    const abc = {
-      fontSize: '28px',
-      height: '30px',
-      color: '#fff'
-    }
-    const bbb = {
-      fontSize: '18px',
-      height: '30px',
-      color: '#c4a'
-    }
     // <BrowserRouter>需要后端支持，<HashRouter>不需要
     return (
       <HashRouter>
         <div className="app-wrap">
-          <div className="header">header</div>
+          <div className={style.header}>header</div>
           <div className="section">
-            <div className="side pull-left">
-              <div style={a ? abc : bbb}>ad</div>
+            <div className={style.side} data-role="pull-left">
               <Sidebar/>
             </div>
-            <div className="content pull-right">
+            <div className={style.content} data-role="pull-right">
               <Route exact path="/" component={Home} />
               <Route path="/home" component={Home} />
               <Route path="/todos" component={Todos} />
