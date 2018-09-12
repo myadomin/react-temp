@@ -2,7 +2,7 @@
 import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from '@src/view/app/index.js'
+import App from '@src/view/app'
 import '@src/style/base.css'
 import { Provider } from 'react-redux'
 import store from '@src/store/store'

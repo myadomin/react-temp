@@ -37,7 +37,7 @@ export default class App extends Component {
           >
             <div className={s.logo}>
               <img src={imgUrl} className={s.logoSvg}></img>
-              <h1 className={s.h1}>游戏发货平台</h1>
+              <h1 className={s.h1}>啊啊啊啊附带</h1>
             </div>
             <Menu theme="dark" mode="inline"
               defaultSelectedKeys={[this.state.current]}
