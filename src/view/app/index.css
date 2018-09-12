@@ -21,9 +21,3 @@
   vertical-align: middle;
   margin: 0 10px
 }
-:global(.avatar-dropdown-link:hover) {
-  background: #f8f8f8
-}
-:global(.message-badge:hover) {
-  background: #f8f8f8
-}
