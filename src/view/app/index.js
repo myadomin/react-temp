@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Icon } from 'antd'
-import { Route, Link, NavLink, withRouter } from 'react-router-dom'
+import { Route, Link, withRouter } from 'react-router-dom'
 import s from './index.css'
 import GlobalHeader from './GlobalHeader'
 import Home from '@src/view/home'
@@ -40,24 +40,26 @@ class App extends Component {
           >
             <SubMenu key="1" title={<span><Icon type="appstore" /><span>Examples</span></span>}>
               <Menu.Item key="home">
-                <NavLink to="/home">
+                <Link to="/home" replace>
                   <span className="nav-text">home</span>
-                </NavLink>
+                </Link>
               </Menu.Item>
               <Menu.Item key="todos">
-                <NavLink to="/todos">
+                <Link to="/todos" replace>
                   <span className="nav-text">todos</span>
-                </NavLink>
+                </Link>
               </Menu.Item>
               <Menu.Item key="shopcart">
-                <NavLink to="/shopcart">
+                <Link to="/shopcart" replace>
                   <span className="nav-text">shopcart</span>
-                </NavLink>
+                </Link>
               </Menu.Item>
             </SubMenu>
             <Menu.Item key="2">
-              <Icon type="desktop" />
-              <span className="nav-text">斯芬斯蒂芬</span>
+              <Link to="/todos" replace>
+                <Icon type="desktop" />
+                <span className="nav-text">发货操作</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="3">
               <Icon type="inbox" />
