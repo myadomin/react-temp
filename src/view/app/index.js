@@ -6,6 +6,7 @@ import GlobalHeader from './GlobalHeader'
 import Home from '@src/view/home'
 import Todos from '@src/view/todos/todos'
 import Shopcart from '@src/view/shopcart/shopcart'
+import Delivery from '@src/view/delivery'
 
 class App extends Component {
   constructor (props, context) {
@@ -56,7 +57,7 @@ class App extends Component {
               </Menu.Item>
             </SubMenu>
             <Menu.Item key="2">
-              <Link to="/todos" replace>
+              <Link to="/delivery" replace>
                 <Icon type="desktop" />
                 <span className="nav-text">发货操作</span>
               </Link>
@@ -81,6 +82,7 @@ class App extends Component {
               <Route path="/home" component={Home} />
               <Route path="/todos" component={Todos} />
               <Route path="/shopcart" component={Shopcart} />
+              <Route path="/delivery" component={Delivery} />
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
