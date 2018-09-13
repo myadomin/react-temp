@@ -23,6 +23,7 @@ class App extends Component {
     // withRouter(App)以后 this.props就有location等路由相关信息了
     // 每次刷新 切换导航 重新输入url等都会进入这里 重新算出current给到selectedKeys
     const current = this.props.location.pathname.replace(/\//, '') || 'home'
+    console.log(current)
     return (
       <Layout style={{ height: '100vh' }}>
         <Sider
@@ -56,7 +57,7 @@ class App extends Component {
                 </Link>
               </Menu.Item>
             </SubMenu>
-            <Menu.Item key="2">
+            <Menu.Item key="delivery">
               <Link to="/delivery" replace>
                 <Icon type="desktop" />
                 <span className="nav-text">发货操作</span>
