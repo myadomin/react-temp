@@ -21,6 +21,7 @@ class App extends Component {
     const imgUrl = require('@src/assets/logo.svg')
     // withRouter(App)以后 this.props就有location等路由相关信息了
     // 每次刷新 切换导航 重新输入url等都会进入这里 重新算出current给到selectedKeys
+    // this.props.history.push(a) 动态跳转
     const current = this.props.location.pathname.replace(/\//, '') || 'home'
     return (
       <Layout style={{ height: '100vh' }}>
@@ -82,7 +83,7 @@ class App extends Component {
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-              xxxx ©2018 Created by xxxxx
+            xxxx ©2018 Created by xxxxx
           </Footer>
         </Layout>
       </Layout>
