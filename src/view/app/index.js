@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Icon } from 'antd'
-import { Route, Link, NavLink, withRouter } from 'react-router-dom'
+import { Route, Link, withRouter } from 'react-router-dom'
 import s from './index.css'
 import GlobalHeader from './GlobalHeader'
 import Home from '@src/view/home'
 import Todos from '@src/view/todos/todos'
 import Shopcart from '@src/view/shopcart/shopcart'
+import Delivery from '@src/view/delivery'
 
 class App extends Component {
   constructor (props, context) {
@@ -23,6 +24,7 @@ class App extends Component {
     // 每次刷新 切换导航 重新输入url等都会进入这里 重新算出current给到selectedKeys
     // this.props.history.push(a) 动态跳转
     const current = this.props.location.pathname.replace(/\//, '') || 'home'
+    console.log(current)
     return (
       <Layout style={{ height: '100vh' }}>
         <Sider
@@ -41,24 +43,26 @@ class App extends Component {
           >
             <SubMenu key="1" title={<span><Icon type="appstore" /><span>Examples</span></span>}>
               <Menu.Item key="home">
-                <NavLink to="/home">
+                <Link to="/home" replace>
                   <span className="nav-text">home</span>
-                </NavLink>
+                </Link>
               </Menu.Item>
               <Menu.Item key="todos">
-                <NavLink to="/todos">
+                <Link to="/todos" replace>
                   <span className="nav-text">todos</span>
-                </NavLink>
+                </Link>
               </Menu.Item>
               <Menu.Item key="shopcart">
-                <NavLink to="/shopcart">
+                <Link to="/shopcart" replace>
                   <span className="nav-text">shopcart</span>
-                </NavLink>
+                </Link>
               </Menu.Item>
             </SubMenu>
-            <Menu.Item key="2">
-              <Icon type="desktop" />
-              <span className="nav-text">斯芬斯蒂芬</span>
+            <Menu.Item key="delivery">
+              <Link to="/delivery" replace>
+                <Icon type="desktop" />
+                <span className="nav-text">发货操作</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="3">
               <Icon type="inbox" />
@@ -80,6 +84,7 @@ class App extends Component {
               <Route path="/home" component={Home} />
               <Route path="/todos" component={Todos} />
               <Route path="/shopcart" component={Shopcart} />
+              <Route path="/delivery" component={Delivery} />
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
