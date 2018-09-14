@@ -7,6 +7,7 @@ import Home from '@src/view/home'
 import Todos from '@src/view/todos/todos'
 import Shopcart from '@src/view/shopcart/shopcart'
 import Delivery from '@src/view/delivery'
+import Bbs from '@src/view/Bbs'
 
 class App extends Component {
   constructor (props, context) {
@@ -64,9 +65,11 @@ class App extends Component {
                 <span className="nav-text">发货操作</span>
               </Link>
             </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="inbox" />
-              <span className="nav-text">方方法分</span>
+            <Menu.Item key="bbs">
+              <Link to="/bbs" replace>
+                <Icon type="inbox" />
+                <span className="nav-text">聊天室学习</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="4">
               <Icon type="user" />
@@ -85,6 +88,7 @@ class App extends Component {
               <Route path="/todos" component={Todos} />
               <Route path="/shopcart" component={Shopcart} />
               <Route path="/delivery" component={Delivery} />
+              <Route path="/bbs" component={Bbs} />
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
