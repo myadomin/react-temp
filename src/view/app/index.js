@@ -68,12 +68,12 @@ class App extends Component {
             <Menu.Item key="bbs">
               <Link to="/bbs" replace>
                 <Icon type="inbox" />
-                <span className="nav-text">聊天室学习</span>
+                <span className="nav-text">聊天室</span>
               </Link>
             </Menu.Item>
             <Menu.Item key="4">
               <Icon type="user" />
-              <span className="nav-text">撒旦法</span>
+              <span className="nav-text">发货账单</span>
             </Menu.Item>
           </Menu>
         </Sider>
