@@ -51,7 +51,7 @@ export default class Bbs extends Component {
               </ul>
             </div>
             <div>
-              <Input addonBefore="发送给xxx：" />
+              <Input addonBefore="发送给：" />
             </div>
             <div>
               <Input.TextArea rows={4} autosize={{minRows: 4, maxRows: 4}} />
