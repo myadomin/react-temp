@@ -16,7 +16,6 @@ class App extends Component {
 
   render () {
     const { Header, Content, Footer, Sider } = Layout
-    const { SubMenu } = Menu
     const imgUrl = require('@src/assets/logo.svg')
     // withRouter(App)以后 this.props就有location等路由相关信息了
     // 每次刷新 切换导航 重新输入url等都会进入这里 重新算出current给到selectedKeys
