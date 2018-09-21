@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '@src/store/todos/action'
+import { red } from '@src/style/theme'
 
 class AddTodo extends Component {
   constructor (props, context) {
@@ -13,6 +14,14 @@ class AddTodo extends Component {
     let input
     return (
       <div className="item">
+        <style jsx>{`
+          .input {
+            border: 1px solid #ccc
+          }
+          .abbb {
+            color: ${red}
+          }
+        `}</style>
         <form
           onSubmit={e => {
             e.preventDefault()
@@ -24,6 +33,7 @@ class AddTodo extends Component {
           }}
         >
           <input
+            className="input abbb"
             ref={node => {
               input = node
             }}

@@ -40,6 +40,8 @@
     "redux-logger": "~3.0.6",
     "rimraf": "~2.6.2",
     "style-loader": "~0.19.1",
+    "styled-jsx": "^3.0.2",
+    "styled-jsx-plugin-stylus": "^0.0.4",
     "stylus": "~0.54.5",
     "stylus-loader": "~3.0.2",
     "url-loader": "~0.6.2",
