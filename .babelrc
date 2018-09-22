@@ -8,6 +8,7 @@
     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }],
     "transform-runtime",
     "transform-decorators-legacy",
-    ["styled-jsx/babel", { "plugins": ["styled-jsx-plugin-stylus"] }]
+    "styled-jsx/babel"
+    // ["styled-jsx/babel", { "plugins": ["styled-jsx-plugin-stylus"] }]
   ]
 }
