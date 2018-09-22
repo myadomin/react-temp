@@ -9,7 +9,7 @@
 * react学习路线
 
 ### react
-参考demo todos-no-redux
+参考example todos-no-redux
 ##### react主要构成
 * jsx：html写在js里return出来，css外部引入或者css-in-js
 * props：由父组件传过来的 单项数据流 只读不可写(写就是子组件改变父组件了)
@@ -71,7 +71,7 @@ class InputControlES6 extends React.Component {
 * 抽组件的时候，让子组件尽量为无状态组件（形成 props => 组件 的抽象，便于复用）
 
 ### redux
-为了解决组件间的状态传递 启用redux 参考demo counter
+为了解决组件间的状态传递 启用redux 参考example counter
 ##### dataflow
 ![Alt Text](./assets/redux-dataflow.png)
 ##### apis
@@ -83,7 +83,7 @@ class InputControlES6 extends React.Component {
 * applyMiddleware: 中间件
 
 ### react-redux
-为了解决store state dispatch一直往下传递 启用react-redux 参考demo todos-react-redux
+为了解决store state dispatch一直往下传递 启用react-redux 参考example todos-react-redux
 ##### apis
 * Provider 为每层组件注入store
 * connect(mapStateToProps, mapDispatchToPros)(comp) 在任意组件用connect为props添加state及dispatch
@@ -104,7 +104,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 ```
 ##### tips
-* 用combineReducers形成各种state数据结构 参考demo react-adomin-temp src store
+* 用combineReducers形成各种state数据结构 参考example react-adomin-temp src store
 * applyMiddleware中间件
 * reducer必须是纯函数(相同的输入相同的输出) 也就是不能改变state的引用, 否则不触发重新渲染。 [参考文档 Immutable](http://www.redux.org.cn/docs/recipes/reducers/ImmutableUpdatePatterns.html)
 * 复杂数据项目 用**reselect**缓存数据
@@ -125,7 +125,7 @@ const totalSelector = createSelector(
   * [参考：State 范式化](http://www.redux.org.cn/docs/recipes/reducers/NormalizingStateShape.html)
 
 ### redux-thunk
-参考demo async-with-thunk
+参考example async-with-thunk
 actionCreator return object，无法在里面做异步操作，所以引入redux-thunk。actionCreator可以 return function，并且暴露dispatch用于发action，暴露getState用于拿到所有state。
 vuex中不存在以上问题(action直接写函数然后在里面emmit mutations,rootState可以拿到所有state) 所以不需要thunk这种东西
 ``` javascript

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Button } from 'antd'
-import './index.css'
 import APISHOP from '@src/api/shop'
 import APIBUY from '@src/api/buy'
 

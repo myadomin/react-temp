@@ -20,7 +20,7 @@ const webpackConfigBase = {
   resolve: {
     extensions: ['.js', '.json'],
     alias: {
-      '@src': path.join(__dirname, '../src')
+      '@src': resolve('../src')
     }
   },
   module: {
@@ -43,25 +43,29 @@ const webpackConfigBase = {
         exclude: /node_modules/,
         use: ['babel-loader']
       },
-      // node_modules不启用css module(因为antd不能用css module), 其他都启用css module
       {
         test: /\.css$/,
-        include: [resolve('../node_modules')],
         use: ['style-loader', 'css-loader']
       },
-      {
-        test: /\.css$/,
-        exclude: [resolve('../node_modules')],
-        use: ['style-loader', {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 1,
-            // css modules支持
-            modules: true,
-            localIdentName: '[name]__[local]__[hash:base64:5]'
-          }
-        }]
-      },
+      // 不用：style-jsx里写stylus css没有高亮 style-jsx本身已支持变量足够用了
+      // {
+      //   test: /\.styl$/,
+      //   use: ['style-loader', 'css-loader', 'stylus-loader']
+      // },
+      // 太啰嗦不用：启用css module, 除了node_modules(因为antd不能用css module)
+      // {
+      //   test: /\.css$/,
+      //   exclude: [resolve('../node_modules')],
+      //   use: ['style-loader', {
+      //     loader: 'css-loader',
+      //     options: {
+      //       importLoaders: 1,
+      //       // css modules支持
+      //       modules: true,
+      //       localIdentName: '[name]__[local]__[hash:base64:5]'
+      //     }
+      //   }]
+      // },
       {
         test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
         use: [{

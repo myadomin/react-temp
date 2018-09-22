@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Dropdown, Icon, message, Avatar, Badge } from 'antd'
+import { Menu, Dropdown, Icon, message, Avatar } from 'antd'
 
 const GlobalHeader = () => {
   const onClick = ({ key }) => {
@@ -16,6 +16,11 @@ const GlobalHeader = () => {
   )
   return (
     <div style={{ height: '100%', padding: '0 10px' }}>
+      <style jsx>{`
+        .avatar-dropdown-link:hover {
+          background: #f8f8f8
+        }
+      `}</style>
       <Dropdown overlay={menu}>
         <div className="avatar-dropdown-link"
           style={{ float: 'right', height: '100%', cursor: 'pointer', padding: '0 20px' }}>
@@ -40,17 +45,6 @@ const GlobalHeader = () => {
           }} />
         </div>
       </Dropdown>
-      <span className="message-badge" style={{
-        display: 'block',
-        float: 'right',
-        height: '100%',
-        cursor: 'pointer',
-        padding: '0px 20px'
-      }}>
-        <Badge count={21}>
-          <Icon type="message" theme="outlined" style={{ color: '#1890ff', fontSize: '20px', margin: '5px' }} />
-        </Badge>
-      </span>
     </div>
   )
 }

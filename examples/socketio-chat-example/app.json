@@ -1,0 +1,17 @@
+{
+  "name": "Socket-Chat-Example",
+  "description": "my first socket.io app",
+  "keywords": [
+    "node",
+    "express",
+    "socket.io",
+    "realtime",
+    "websocket"
+  ],
+  "scripts": {
+  },
+  "addons": [
+  ],
+  "env": {
+  }
+}
