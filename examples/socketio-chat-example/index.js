@@ -8,10 +8,23 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  // 接收客户端emit的getData1事件
+  socket.on('getData1', function(msg){
+    // emit回客户端
+    io.emit('getData1', 'getData1:' + msg);
+  });
+  socket.on('getData2', function(msg){
+    io.emit('getData2', 'getData2:' + msg);
+  });
+  socket.on('getData3', function(msg){
+    io.emit('getData3', 'getData3:' + msg);
   });
 });
+
+// 每隔5秒钟 emit一个intervalData事件
+setInterval(() => {
+  io.emit('intervalData', 'this is intervalData, update once by 5 secondes');
+}, 5000)
 
 http.listen(port, function(){
   console.log('listening on *:' + port);
