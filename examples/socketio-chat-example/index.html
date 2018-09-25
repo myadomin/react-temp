@@ -50,17 +50,28 @@
         });
         
         // 原生websocket 如何分类？ new WebSocket不能连接socketio的服务端
+        // ws://echo.websocket.org：send什么过去，就会在这里的evt.data返回什么
         // websocket = new WebSocket('ws://echo.websocket.org');
         // websocket.onopen = function(evt) {
-        //   websocket.send('initData');
+        //   websocket.send('{ rpcID: "userListReq", data: {}}');
         // };
         // $('form').submit(function(){
         //   websocket.send($('#m').val());
         //   $('#m').val('');
         //   return false;
         // });
-        // // ws://echo.websocket.org：send什么过去，就会在这里的evt.data返回什么
         // websocket.onmessage = function(evt) {
+        //   // evt.data = {
+        //   //   rpcID: "xxxxxx",
+        //   //   data: {
+        //   //     xxxx
+        //   //   }
+        //   // }
+        //   // if (evt.data.rpcID === 'userListAck') {
+        //   //   evt.data.data
+        //   // } else if (evt.data.rpcID === 'chatterList') {
+        //   //   xxxx
+        //   // }
         //   $('#messages').append($('<li>').text(evt.data));
         //   window.scrollTo(0, document.body.scrollHeight);
         // };

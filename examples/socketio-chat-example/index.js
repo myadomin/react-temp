@@ -11,7 +11,7 @@ io.on('connection', function(socket){
   // 接收客户端emit的getData1事件
   socket.on('getData1', function(msg){
     // emit回客户端
-    io.emit('getData1', 'getData1:' + msg);
+    io.emit('getData1', 'getData1:' + {a: 1, b: 111});
   });
   socket.on('getData2', function(msg){
     io.emit('getData2', 'getData2:' + msg);
