@@ -1,0 +1,24 @@
+{
+  "name": "todos",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "mobx-react-devtools": "^6.0.3",
+    "react-app-rewired": "^1.6.2",
+    "react-scripts": "^1.1.4"
+  },
+  "dependencies": {
+    "mobx": "^5.1.2",
+    "mobx-react": "^5.2.8",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.1",
+    "react-app-rewire-mobx": "^1.0.9",
+    "react-dom": "^16.3.1"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "eject": "react-app-rewired eject",
+    "test": "react-app-rewired test"
+  }
+}
