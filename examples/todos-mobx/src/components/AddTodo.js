@@ -12,8 +12,8 @@ class AddTodo extends Component {
 
   render () {
     const { todosStore } = this.props
-    // 下面这样写 直接onClick={() => handleAddClick(value)} 在todosStore.js里找不到this
-    // const { handleAddClick } = this.props.todosStore
+    // 如果const { handleAddClick } = this.props.todosStore
+    // 然后 button onClick={() => handleAddClick(value)}，在todosStore.js里找不到this
     return (
       <div>
         <input type="text" onChange={(e) => todosStore.changeAddInputValue(e.target.value)} value={todosStore.addInputValue} />
