@@ -11,6 +11,7 @@ const stores = {
 }
 
 render((
+  // <Provider todosStore={todosStore} visibleFilterStore={visibleFilterStore}>
   <Provider {...stores}>
     <App />
   </Provider>

@@ -16,7 +16,7 @@ const getVisibleTodos = (todos, visibleType) => {
 
 @inject('todosStore', 'visibleFilterStore')
 @observer
-class VisibleTodoList extends React.Component {
+class VisibleTodoList extends Component {
   constructor (props, context) {
     super(props)
   }
