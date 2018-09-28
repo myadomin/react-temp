@@ -25,62 +25,62 @@
       $(function () {
         // io() 等同于 io(window.location.href) 
         // 在这里就是io('http://localhost:3000/') 等同于io('ws://localhost:3000/')
-        var socket = io('ws://localhost:3000/');
-        $('form').submit(function(){
-          // emit getData1事件到服务端
-          socket.emit('getData1', $('#m').val());
-          socket.emit('getData2', $('#m').val());
-          socket.emit('getData3', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
-        // 接收服务端emit的getData1事件
-        socket.on('getData1', function(msg){
-          $('#messages').append($('<li>').text(msg));
-        });
-        socket.on('getData2', function(msg){
-          $('#messages').append($('<li>').text(msg));
-        });
-        socket.on('getData3', function(msg){
-          $('#messages').append($('<li>').text(msg));
-        });
-        // 每隔5秒钟 服务端会emit一个intervalData事件
-        socket.on('intervalData', function(msg){
-          $('#messages').append($('<li>').text(msg));
-        });
-        
-        // 原生websocket 如何分类？ new WebSocket不能连接socketio的服务端
-        // ws://echo.websocket.org：send什么过去，就会在这里的evt.data返回什么
-        // websocket = new WebSocket('ws://echo.websocket.org');
-        // websocket.onopen = function(evt) {
-        //   websocket.send('{ rpcID: "userListReq", data: {}}');
-        // };
+        // var socket = io('ws://localhost:3000/');
         // $('form').submit(function(){
-        //   websocket.send($('#m').val());
+        //   // emit getData1事件到服务端
+        //   socket.emit('getData1', $('#m').val());
+        //   socket.emit('getData2', $('#m').val());
+        //   socket.emit('getData3', $('#m').val());
         //   $('#m').val('');
         //   return false;
         // });
-        // websocket.onmessage = function(evt) {
-        //   // evt.data = {
-        //   //   rpcID: "xxxxxx",
-        //   //   data: {
-        //   //     xxxx
-        //   //   }
-        //   // }
-        //   // if (evt.data.rpcID === 'userListAck') {
-        //   //   evt.data.data
-        //   // } else if (evt.data.rpcID === 'chatterList') {
-        //   //   xxxx
-        //   // }
-        //   $('#messages').append($('<li>').text(evt.data));
-        //   window.scrollTo(0, document.body.scrollHeight);
-        // };
-        // websocket.onclose = function(evt) {
-        //   console.log('WebSocket close')
-        // };
-        // websocket.onerror = function(evt) {
-        //   console.log('WebSocket close')
-        // };
+        // // 接收服务端emit的getData1事件
+        // socket.on('getData1', function(msg){
+        //   $('#messages').append($('<li>').text(msg));
+        // });
+        // socket.on('getData2', function(msg){
+        //   $('#messages').append($('<li>').text(msg));
+        // });
+        // socket.on('getData3', function(msg){
+        //   $('#messages').append($('<li>').text(msg));
+        // });
+        // // 每隔5秒钟 服务端会emit一个intervalData事件
+        // socket.on('intervalData', function(msg){
+        //   $('#messages').append($('<li>').text(msg));
+        // });
+        
+        // 原生websocket 如何分类？ new WebSocket不能连接socketio的服务端
+        // ws://echo.websocket.org：send什么过去，就会在这里的evt.data返回什么
+        websocket = new WebSocket('ws://echo.websocket.org');
+        websocket.onopen = function(evt) {
+          websocket.send('{ rpcID: "userListReq", data: {}}');
+        };
+        $('form').submit(function(){
+          websocket.send($('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        websocket.onmessage = function(evt) {
+          // evt.data = {
+          //   rpcID: "xxxxxx",
+          //   data: {
+          //     xxxx
+          //   }
+          // }
+          // if (evt.data.rpcID === 'userListAck') {
+          //   evt.data.data
+          // } else if (evt.data.rpcID === 'chatterList') {
+          //   xxxx
+          // }
+          $('#messages').append($('<li>').text(evt.data));
+          window.scrollTo(0, document.body.scrollHeight);
+        };
+        websocket.onclose = function(evt) {
+          console.log('WebSocket close')
+        };
+        websocket.onerror = function(evt) {
+          console.log('WebSocket close')
+        };
       });
     </script>
   </body>
