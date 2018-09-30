@@ -6,15 +6,12 @@ import './index.styl'
 import Mock from '@src/view/mock'
 import Mobx from '@src/view/mobx'
 import Websocket from '@src/view/websocket'
-import initWebsocket from '@src/utils/initWebsocket'
 
 class App extends Component {
   constructor (props, context) {
     super(props)
     this.state = {
-      current: ''
     }
-    initWebsocket()
   }
 
   render () {
@@ -24,7 +21,6 @@ class App extends Component {
     // 每次刷新 切换导航 重新输入url等都会进入这里 重新算出current给到selectedKeys
     // this.props.history.push(a) 动态跳转
     const current = this.props.location.pathname.replace(/\//, '') || 'mock'
-    console.log(current)
     return (
       <Layout style={{ height: '100vh' }}>
         <Sider

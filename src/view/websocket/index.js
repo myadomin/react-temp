@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Button } from 'antd'
-import websocket from '@src/utils/WebSocket'
 
 export default class Home extends Component {
   constructor (props, context) {
@@ -9,7 +8,7 @@ export default class Home extends Component {
   }
 
   sendWebsocket () {
-    websocket.send('12121')
+    window.websocket.send('12121')
   }
 
   render () {
