@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { Layout, Menu, Icon } from 'antd'
 import { Route, Link, withRouter } from 'react-router-dom'
 import GlobalHeader from './GlobalHeader'
-import Home from '@src/view/home'
-import Todos from '@src/view/todos/todos'
-import Shopcart from '@src/view/shopcart/shopcart'
+import Mock from '@src/view/mock'
+import Mobx from '@src/view/mobx'
+import Websocket from '@src/view/websocket'
+import initWebsocket from '@src/utils/initWebsocket'
 
 class App extends Component {
   constructor (props, context) {
@@ -12,6 +13,7 @@ class App extends Component {
     this.state = {
       current: ''
     }
+    initWebsocket()
   }
 
   render () {
@@ -20,7 +22,7 @@ class App extends Component {
     // withRouter(App)以后 this.props就有location等路由相关信息了
     // 每次刷新 切换导航 重新输入url等都会进入这里 重新算出current给到selectedKeys
     // this.props.history.push(a) 动态跳转
-    const current = this.props.location.pathname.replace(/\//, '') || 'home'
+    const current = this.props.location.pathname.replace(/\//, '') || 'mock'
     console.log(current)
     return (
       <Layout style={{ height: '100vh' }}>
@@ -63,22 +65,22 @@ class App extends Component {
             selectedKeys={[current]}
             defaultOpenKeys={['1']}
           >
-            <Menu.Item key="home">
-              <Link to="/home" replace>
+            <Menu.Item key="mock">
+              <Link to="/mock" replace>
                 <Icon type="desktop" />
-                <span className="nav-text">home</span>
+                <span className="nav-text">mock</span>
               </Link>
             </Menu.Item>
-            <Menu.Item key="todos">
-              <Link to="/todos" replace>
-                <Icon type="inbox" />
-                <span className="nav-text">todos</span>
+            <Menu.Item key="mobx">
+              <Link to="/mobx" replace>
+                <Icon type="desktop" />
+                <span className="nav-text">mobx</span>
               </Link>
             </Menu.Item>
-            <Menu.Item key="shopcart">
-              <Link to="/shopcart" replace>
-                <Icon type="user" />
-                <span className="nav-text">shopcart</span>
+            <Menu.Item key="websocket">
+              <Link to="/websocket" replace>
+                <Icon type="desktop" />
+                <span className="nav-text">websocket</span>
               </Link>
             </Menu.Item>
           </Menu>
@@ -89,10 +91,10 @@ class App extends Component {
           </Header>
           <Content style={{ margin: '24px 16px 0' }}>
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-              <Route exact path="/" component={Home} />
-              <Route path="/home" component={Home} />
-              <Route path="/todos" component={Todos} />
-              <Route path="/shopcart" component={Shopcart} />
+              <Route exact path="/" component={Mock} />
+              <Route path="/mock" component={Mock} />
+              <Route path="/mobx" component={Mobx} />
+              <Route path="/websocket" component={Websocket} />
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>

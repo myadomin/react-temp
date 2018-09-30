@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["env"],
+    ["env", "mobx"],
     "stage-0",
     "react"
   ],
@@ -9,6 +9,5 @@
     "transform-runtime",
     "transform-decorators-legacy",
     "styled-jsx/babel"
-    // ["styled-jsx/babel", { "plugins": ["styled-jsx-plugin-stylus"] }]
   ]
 }
