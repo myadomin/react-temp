@@ -3,11 +3,21 @@ const WebSocket = require('ws')
 const wss = new WebSocket.Server({ port: 3001 })
 
 const switchJson = (json, ws) => {
-  switch (json.rpcID) {
+  switch (json.rpcId) {
     case 'checkIsConnection':
-      return ws.send('ws is connection')
+      const checkIsConnection = {
+        rpcId: 'checkIsConnection',
+        data: 'ws is connection'
+      }
+      return ws.send(JSON.stringify(checkIsConnection))
+    case 'addMessage':
+      const addMessage = {
+        rpcId: 'addMessage',
+        data: 'this is message' + json.data
+      }
+      return ws.send(JSON.stringify(addMessage))
     default:
-      ws.send('没有找到此消息对应的rpcID')
+      ws.send('没有找到此消息对应的rpcId')
   }
 }
 wss.on('connection', function connection (ws) {

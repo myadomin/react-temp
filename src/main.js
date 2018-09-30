@@ -9,9 +9,11 @@ import { HashRouter } from 'react-router-dom'
 // 打开 mock数据，关闭 请求服务器数据
 import mock from '@src/mock'
 import counterStore from './stores/counterStore.js'
+import wsStore from './stores/wsStore.js'
 
 const stores = {
-  counterStore
+  counterStore,
+  wsStore
 }
 
 ReactDOM.render(
