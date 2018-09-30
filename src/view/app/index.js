@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Layout, Menu, Icon } from 'antd'
 import { Route, Link, withRouter } from 'react-router-dom'
 import GlobalHeader from './GlobalHeader'
+import './index.styl'
 import Mock from '@src/view/mock'
 import Mobx from '@src/view/mobx'
 import Websocket from '@src/view/websocket'
@@ -26,40 +27,15 @@ class App extends Component {
     console.log(current)
     return (
       <Layout style={{ height: '100vh' }}>
-        <style jsx>{`
-          .logo {
-            -webkit-transition: all .3s;
-            background: #002140;
-            height: 64px;
-            line-height: 64px;
-            overflow: hidden;
-            position: relative;
-            transition: all .3s;
-          }
-          .h1 {
-            color: #fff;
-            display: inline-block;
-            font-family: Myriad Pro,Helvetica Neue,Arial,Helvetica,sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-            vertical-align: middle;
-          }
-          .logoSvg {
-            display: inline-block;
-            height: 32px;
-            vertical-align: middle;
-            margin: 0 10px
-          }  
-        `}</style>
         <Sider
           breakpoint="lg"
           collapsedWidth="0"
           // onBreakpoint={(broken) => { console.log(broken) }}
           // onCollapse={(collapsed, type) => { console.log(collapsed, type) }}
         >
-          <div className="logo">
-            <img src={imgUrl} className="logoSvg"></img>
-            <h1 className="h1">啊啊啊啊附带</h1>
+          <div className="layout-logo">
+            <img src={imgUrl} className="layout-logoSvg"></img>
+            <h1 className="layout-h1">啊啊啊啊附带</h1>
           </div>
           <Menu theme="dark" mode="inline"
             selectedKeys={[current]}

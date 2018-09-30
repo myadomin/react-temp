@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'antd'
 import { inject, observer } from 'mobx-react'
+import DevTools from 'mobx-react-devtools'
 
 @inject('counterStore')
 @observer
@@ -17,6 +18,7 @@ export default class Home extends Component {
     }
     return (
       <div className="home-wrap">
+        <DevTools />
         <div>mobx测试</div>
         <Button type="primary" onClick={incrementCounter}>mobx-incrementCounter</Button>
         <span>{ counterStore.num }</span>

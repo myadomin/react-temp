@@ -35,6 +35,7 @@
     "friendly-errors-webpack-plugin": "~1.7.0",
     "html-webpack-plugin": "~2.30.1",
     "http-proxy": "~1.16.2",
+    "mobx-react-devtools": "^6.0.3",
     "mockjs": "~1.0.1-beta3",
     "rimraf": "~2.6.2",
     "style-loader": "~0.19.1",
