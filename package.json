@@ -9,6 +9,11 @@
     "build": "rimraf dist && webpack --config ./scripts/webpack.prod.config.js"
   },
   "author": "adomin",
+  "babel": {
+    "presets": [
+      "./.babelrc.js"
+    ]
+  },
   "devDependencies": {
     "babel-core": "~6.26.0",
     "babel-eslint": "^8.2.6",
