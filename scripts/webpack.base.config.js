@@ -8,7 +8,7 @@ function resolve (relatedPath) {
 const webpackConfigBase = {
   entry: {
     // vendor
-    vendor: ['react', 'react-dom', 'redux', 'react-redux'],
+    vendor: ['react', 'react-dom', 'mobx', 'mobx-react', 'antd'],
     // 入口文件
     main: resolve('../src/main.js')
   },
@@ -47,25 +47,10 @@ const webpackConfigBase = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       },
-      // 不用：style-jsx里写stylus css没有高亮 style-jsx本身已支持变量足够用了
-      // {
-      //   test: /\.styl$/,
-      //   use: ['style-loader', 'css-loader', 'stylus-loader']
-      // },
-      // 太啰嗦不用：启用css module, 除了node_modules(因为antd不能用css module)
-      // {
-      //   test: /\.css$/,
-      //   exclude: [resolve('../node_modules')],
-      //   use: ['style-loader', {
-      //     loader: 'css-loader',
-      //     options: {
-      //       importLoaders: 1,
-      //       // css modules支持
-      //       modules: true,
-      //       localIdentName: '[name]__[local]__[hash:base64:5]'
-      //     }
-      //   }]
-      // },
+      {
+        test: /\.styl$/,
+        use: ['style-loader', 'css-loader', 'stylus-loader']
+      },
       {
         test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
         use: [{

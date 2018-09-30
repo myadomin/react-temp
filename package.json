@@ -6,9 +6,15 @@
   "scripts": {
     "start": "cross-env PROXY_ENV=dev NODE_ENV=dev webpack-dev-server --hot --config ./scripts/webpack.dev.config.js",
     "dev": "cross-env PROXY_ENV=dev NODE_ENV=dev webpack-dev-server --config ./scripts/webpack.dev.config.js",
-    "build": "rimraf dist && webpack --config ./scripts/webpack.prod.config.js"
+    "build": "rimraf dist && webpack --config ./scripts/webpack.prod.config.js",
+    "ws": "node ./src/mock/ws.js"
   },
   "author": "adomin",
+  "babel": {
+    "presets": [
+      "./.babelrc.js"
+    ]
+  },
   "devDependencies": {
     "babel-core": "~6.26.0",
     "babel-eslint": "^8.2.6",
@@ -35,13 +41,11 @@
     "friendly-errors-webpack-plugin": "~1.7.0",
     "html-webpack-plugin": "~2.30.1",
     "http-proxy": "~1.16.2",
+    "mobx-react-devtools": "^6.0.3",
     "mockjs": "~1.0.1-beta3",
-    "redux-devtools-extension": "~2.13.5",
-    "redux-logger": "~3.0.6",
+    "nodejs-websocket": "^1.7.1",
     "rimraf": "~2.6.2",
     "style-loader": "~0.19.1",
-    "styled-jsx": "^3.0.2",
-    "styled-jsx-plugin-stylus": "^0.0.4",
     "stylus": "~0.54.5",
     "stylus-loader": "~3.0.2",
     "url-loader": "~0.6.2",
@@ -53,12 +57,11 @@
   "dependencies": {
     "antd": "~3.8.0",
     "axios": "~0.18.0",
+    "mobx": "^5.5.0",
+    "mobx-react": "^5.2.8",
     "react": "~16.0.0",
     "react-dom": "~16.0.0",
-    "react-redux": "~5.0.6",
     "react-router-dom": "~4.3.1",
-    "redux": "~3.7.2",
-    "redux-thunk": "~2.2.0",
     "webpack": "~3.10.0"
   }
 }
