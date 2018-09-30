@@ -8,7 +8,7 @@ export default class Home extends Component {
   }
 
   sendWebsocket () {
-    window.websocket.send('12121')
+    window.websocket.send('abc')
   }
 
   render () {

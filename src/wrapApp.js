@@ -10,12 +10,15 @@ export default class Home extends Component {
   }
 
   initWebsocket () {
-    window.websocket = new window.WebSocket('ws://echo.websocket.org')
+    window.websocket = new window.WebSocket('ws://localhost:3001')
     window.websocket.onopen = function (evt) {
-      window.websocket.send('{ rpc1212ID: "userListReq", data: {}}')
+      const json = {
+        rpcID: 'checkIsConnection',
+        data: null
+      }
+      window.websocket.send(JSON.stringify(json))
     }
     window.websocket.onmessage = function (evt) {
-      console.log(evt)
       console.log(evt.data)
     }
   }
