@@ -1,6 +1,6 @@
 export const receiveDataToStore = (json, wsStore) => {
   switch (json.rpcId) {
-    case 'checkIsConnection':
+    case 'heartbeat':
       return console.log(json.data)
     case 'addMessage':
       return wsStore.messageList.push(json.data)

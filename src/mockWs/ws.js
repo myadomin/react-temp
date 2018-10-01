@@ -11,8 +11,8 @@ wss.on('connection', (ws) => {
   ws.on('message', (message) => {
     const json = JSON.parse(message)
     switch (json.rpcId) {
-      case 'checkIsConnection':
-        return sendWsMsg('checkIsConnection', 'ws is connection')
+      case 'heartbeat':
+        return sendWsMsg('heartbeat', 'heartbeat: WebSocket is connectting')
       case 'addMessage':
         return sendWsMsg('addMessage', json.data)
       default:
