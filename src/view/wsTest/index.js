@@ -11,7 +11,7 @@ export default class Home extends Component {
     this.state = {}
   }
 
-  sendWebsocket () {
+  addMessage () {
     const { wsStore } = this.props
     wsSend({
       rpcId: 'addMessage',
@@ -28,7 +28,7 @@ export default class Home extends Component {
     return (
       <div className="home-wrap">
         <div>测试websocket</div>
-        <Button type="primary" onClick={this.sendWebsocket.bind(this)}>websocket添加一条信息</Button>
+        <Button type="primary" onClick={this.addMessage.bind(this)}>websocket添加一条信息</Button>
         <ul>
           {wsStore.messageList.map((item) => {
             return <li key={item}>this is message: {item}</li>

@@ -46,7 +46,7 @@ const wsSend = (options) => {
   if (window.websocket && window.websocket.readyState === 1) {
     window.websocket.send(JSON.stringify({ rpcId: options.rpcId, data: options.data }))
   } else {
-    console.error('不能发送消息，因为WebSocket还没连接到服务器')
+    console.error('不能发送消息，因为WebSocket没连接到服务器')
   }
   // 接收消息
   window.websocket.onmessage = (evt) => {
