@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'antd'
 import { inject, observer } from 'mobx-react'
+import { sendWsMsg } from '@src/utils/index'
 
 @inject('wsStore')
 @observer
@@ -13,11 +14,7 @@ export default class Home extends Component {
 
   sendWebsocket () {
     this.index++
-    const addMessage = {
-      rpcId: 'addMessage',
-      data: this.index
-    }
-    window.websocket.send(JSON.stringify(addMessage))
+    sendWsMsg('addMessage', this.index)
   }
 
   render () {
@@ -28,7 +25,7 @@ export default class Home extends Component {
         <Button type="primary" onClick={this.sendWebsocket.bind(this)}>websocket添加一条信息</Button>
         <ul>
           {wsStore.messageList.map((item) => {
-            return <li key={item}>{item}</li>
+            return <li key={item}>this is message: {item}</li>
           })}
         </ul>
       </div>

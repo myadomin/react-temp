@@ -1,36 +1,22 @@
 const WebSocket = require('ws')
-
 const wss = new WebSocket.Server({ port: 3001 })
 
-const switchJson = (json, ws) => {
-  switch (json.rpcId) {
-    case 'checkIsConnection':
-      const checkIsConnection = {
-        rpcId: 'checkIsConnection',
-        data: 'ws is connection'
-      }
-      return ws.send(JSON.stringify(checkIsConnection))
-    case 'addMessage':
-      const addMessage = {
-        rpcId: 'addMessage',
-        data: 'this is message' + json.data
-      }
-      return ws.send(JSON.stringify(addMessage))
-    default:
-      ws.send('没有找到此消息对应的rpcId')
-  }
+const sendWsMsg = (rpcId, data) => {
+  this.ws.send(JSON.stringify({ rpcId: rpcId, data: data }))
 }
-wss.on('connection', function connection (ws) {
-  ws.on('message', function incoming (message) {
-    new Promise((resolve, reject) => {
-      resolve(JSON.parse(message))
-    }).then((json) => {
-      // window.websocket(JSON.stringify(json))后 JSON.parse正常 进入这里
-      // window.websocket(JSON.stringify('1212'))也算正常 可以进入这里
-      switchJson(json, ws)
-    }).catch(() => {
-      // window.websocket.send('abc') JSON.parse异常 进入这里
-      ws.send(`error: you send message: ${message}, it can not be JSON.parse`)
-    })
+
+// 接收到websocket客户端的消息 根据rpcId返回相应数据
+wss.on('connection', (ws) => {
+  this.ws = ws
+  ws.on('message', (message) => {
+    const json = JSON.parse(message)
+    switch (json.rpcId) {
+      case 'checkIsConnection':
+        return sendWsMsg('checkIsConnection', 'ws is connection')
+      case 'addMessage':
+        return sendWsMsg('addMessage', json.data)
+      default:
+        console.log('服务端：没有找到此消息对应的rpcId')
+    }
   })
 })
