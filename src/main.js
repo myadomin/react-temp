@@ -2,7 +2,7 @@
 import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import WrapApp from '@src/view/wrapApp/index'
+import App from '@src/view/app'
 import '@src/style/base.css'
 import { Provider } from 'mobx-react'
 import { HashRouter } from 'react-router-dom'
@@ -19,7 +19,7 @@ const stores = {
 ReactDOM.render(
   <Provider {...stores}>
     <HashRouter>
-      <WrapApp />
+      <App />
     </HashRouter>
   </Provider>,
   document.getElementById('root')

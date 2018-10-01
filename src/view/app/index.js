@@ -5,13 +5,20 @@ import GlobalHeader from './GlobalHeader'
 import './index.styl'
 import Mock from '@src/view/mock'
 import Mobx from '@src/view/mobx'
-import Websocket from '@src/view/websocket'
+import WsTest from '@src/view/wsTest'
+import { inject, observer } from 'mobx-react'
+import { initWebsocket } from '@src/websocket/index'
 
+// 封装websocket
+@inject('wsStore')
+@observer
 class App extends Component {
   constructor (props, context) {
     super(props)
     this.state = {
     }
+    // websocket初始化
+    initWebsocket(this.props.wsStore)
   }
 
   render () {
@@ -49,10 +56,10 @@ class App extends Component {
                 <span className="nav-text">mobx</span>
               </Link>
             </Menu.Item>
-            <Menu.Item key="websocket">
-              <Link to="/websocket" replace>
+            <Menu.Item key="wsTest">
+              <Link to="/wsTest" replace>
                 <Icon type="desktop" />
-                <span className="nav-text">websocket</span>
+                <span className="nav-text">wsTest</span>
               </Link>
             </Menu.Item>
           </Menu>
@@ -66,7 +73,7 @@ class App extends Component {
               <Route exact path="/" component={Mock} />
               <Route path="/mock" component={Mock} />
               <Route path="/mobx" component={Mobx} />
-              <Route path="/websocket" component={Websocket} />
+              <Route path="/wsTest" component={WsTest} />
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>

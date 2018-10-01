@@ -19,7 +19,7 @@ export default class Home extends Component {
     const { wsStore } = this.props
     return (
       <div className="home-wrap">
-        <div>websocket</div>
+        <div>测试websocket</div>
         <Button type="primary" onClick={this.sendWebsocket.bind(this)}>websocket添加一条信息</Button>
         <ul>
           {wsStore.messageList.map((item) => {
