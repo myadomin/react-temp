@@ -9,12 +9,10 @@ export default class Home extends Component {
   constructor (props, context) {
     super(props)
     this.state = {}
-    this.index = 0
   }
 
   sendWebsocket () {
-    this.index++
-    sendWsMsg('addMessage', this.index)
+    sendWsMsg('addMessage', this.props.wsStore.index)
   }
 
   render () {

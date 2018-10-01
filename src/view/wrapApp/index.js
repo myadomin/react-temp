@@ -46,7 +46,7 @@ export default class Home extends Component {
 
     // 连接错误
     window.websocket.onerror = (evt) => {
-      console.error('WebSocket error')
+      console.error('WebSocket 无法连接到服务器')
     }
 
     // 接收消息
