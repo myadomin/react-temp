@@ -6,18 +6,15 @@ import './index.styl'
 import Mock from '@src/view/mock'
 import Mobx from '@src/view/mobx'
 import WsTest from '@src/view/wsTest'
-import { inject, observer } from 'mobx-react'
 import { initWebsocket } from '@src/websocket/index'
 
-@inject('wsStore')
-@observer
 class App extends Component {
   constructor (props, context) {
     super(props)
     this.state = {
     }
     // websocket初始化
-    initWebsocket(this.props.wsStore)
+    initWebsocket()
   }
 
   render () {
