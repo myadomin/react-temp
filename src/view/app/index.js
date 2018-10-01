@@ -9,7 +9,6 @@ import WsTest from '@src/view/wsTest'
 import { inject, observer } from 'mobx-react'
 import { initWebsocket } from '@src/websocket/index'
 
-// 封装websocket
 @inject('wsStore')
 @observer
 class App extends Component {

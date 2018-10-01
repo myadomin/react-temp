@@ -25,7 +25,6 @@ const initWebsocket = (wsStore) => {
     createTimer = window.setInterval(() => {
       if (window.websocket && window.websocket.readyState === 1) {
         // 已与服务器建立连接 取消重连定时器
-        console.log('清楚定时器')
         window.clearInterval(createTimer)
       } else {
         // 重连
