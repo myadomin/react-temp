@@ -8,6 +8,9 @@ import Mobx from '@src/view/mobx'
 import WsTest from '@src/view/wsTest'
 import { initWebsocket } from '@src/websocket/index'
 
+// 封装websocket
+@inject('wsStore')
+@observer
 class App extends Component {
   constructor (props, context) {
     super(props)
