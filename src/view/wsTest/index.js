@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'antd'
 import { inject, observer } from 'mobx-react'
-import { wsSend } from '@src/websocket/index'
+import { sendWsMsg } from '@src/utils/index'
 
 @inject('wsStore')
 @observer
@@ -12,15 +12,7 @@ export default class Home extends Component {
   }
 
   addMessage () {
-    const { wsStore } = this.props
-    wsSend({
-      rpcId: 'addMessage',
-      data: this.props.wsStore.index,
-      success: (res) => {
-        wsStore.index++
-        wsStore.messageList.push(res.data)
-      }
-    })
+    sendWsMsg('addMessage', this.props.wsStore.index)
   }
 
   render () {
