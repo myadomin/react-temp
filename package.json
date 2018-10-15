@@ -7,7 +7,7 @@
     "start": "cross-env PROXY_ENV=dev NODE_ENV=dev webpack-dev-server --hot --config ./scripts/webpack.dev.config.js",
     "dev": "cross-env PROXY_ENV=dev NODE_ENV=dev webpack-dev-server --config ./scripts/webpack.dev.config.js",
     "build": "rimraf dist && webpack --config ./scripts/webpack.prod.config.js",
-    "ws": "node ./src/mock/ws.js"
+    "ws": "nodemon ./src/websocket/backend/mock.js"
   },
   "author": "adomin",
   "babel": {
@@ -43,7 +43,6 @@
     "http-proxy": "~1.16.2",
     "mobx-react-devtools": "^6.0.3",
     "mockjs": "~1.0.1-beta3",
-    "nodejs-websocket": "^1.7.1",
     "rimraf": "~2.6.2",
     "style-loader": "~0.19.1",
     "stylus": "~0.54.5",
@@ -52,7 +51,8 @@
     "webpack-bundle-analyzer": "~2.9.0",
     "webpack-dev-server": "~2.11.0",
     "webpack-merge": "~4.1.1",
-    "webpack-notifier": "^1.6.0"
+    "webpack-notifier": "^1.6.0",
+    "ws": "^6.0.0"
   },
   "dependencies": {
     "antd": "~3.8.0",

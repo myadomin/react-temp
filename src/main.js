@@ -2,22 +2,24 @@
 import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import WrapApp from '@src/wrapApp'
+import App from '@src/view/app'
 import '@src/style/base.css'
 import { Provider } from 'mobx-react'
 import { HashRouter } from 'react-router-dom'
 // 打开 mock数据，关闭 请求服务器数据
 import mock from '@src/mock'
-import counterStore from './stores/counterStore.js'
+import counterStore from './stores/counterStore'
+import wsStore from './stores/wsStore'
 
 const stores = {
-  counterStore
+  counterStore,
+  wsStore
 }
 
 ReactDOM.render(
   <Provider {...stores}>
     <HashRouter>
-      <WrapApp />
+      <App />
     </HashRouter>
   </Provider>,
   document.getElementById('root')
