@@ -4,12 +4,12 @@
 * react-redux
 * redux-thunk
 * redux文件组织
-* redux开发工具
-* vuex与redux比较
+* mobx
+* vuex、redux、mobx比较
 * react学习路线
 
 ### react
-参考example todos-no-redux
+[参考demo](https://github.com/myadomin/react-adomin-temp/tree/master/examples/todos-no-redux)
 ##### react主要构成
 * jsx：html写在js里return出来，css外部引入或者css-in-js
 * props：由父组件传过来的 单项数据流 只读不可写(写就是子组件改变父组件了)
@@ -71,9 +71,8 @@ class InputControlES6 extends React.Component {
 * 抽组件的时候，让子组件尽量为无状态组件（形成 props => 组件 的抽象，便于复用）
 
 ### redux
-为了解决组件间的状态传递 启用redux 参考example counter
-##### dataflow
-![Alt Text](./assets/redux-dataflow.png)
+为了解决组件间的状态传递 启用redux
+[参考demo](https://github.com/myadomin/react-adomin-temp/tree/master/examples/counter)
 ##### apis
 * reducer: store = createStore(reducers)
 * state: store.getState()
@@ -83,7 +82,8 @@ class InputControlES6 extends React.Component {
 * applyMiddleware: 中间件
 
 ### react-redux
-为了解决store state dispatch一直往下传递 启用react-redux 参考example todos-react-redux
+为了解决store state dispatch一直往下传递 启用react-redux
+[参考demo](https://github.com/myadomin/react-adomin-temp/tree/master/examples/todos-react-redux)
 ##### apis
 * Provider 为每层组件注入store
 * connect(mapStateToProps, mapDispatchToPros)(comp) 在任意组件用connect为props添加state及dispatch
@@ -104,7 +104,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 ```
 ##### tips
-* 用combineReducers形成各种state数据结构 参考example react-adomin-temp src store
+* 用combineReducers形成各种state数据结构
 * applyMiddleware中间件
 * reducer必须是纯函数(相同的输入相同的输出) 也就是不能改变state的引用, 否则不触发重新渲染。 [参考文档 Immutable](http://www.redux.org.cn/docs/recipes/reducers/ImmutableUpdatePatterns.html)
 * 复杂数据项目 用**reselect**缓存数据
@@ -125,7 +125,7 @@ const totalSelector = createSelector(
   * [参考：State 范式化](http://www.redux.org.cn/docs/recipes/reducers/NormalizingStateShape.html)
 
 ### redux-thunk
-参考example async-with-thunk
+[参考demo](https://github.com/myadomin/react-adomin-temp/tree/master/examples/async-with-thunk)
 actionCreator return object，无法在里面做异步操作，所以引入redux-thunk。actionCreator可以 return function，并且暴露dispatch用于发action，暴露getState用于拿到所有state。
 vuex中不存在以上问题(action直接写函数然后在里面emmit mutations,rootState可以拿到所有state) 所以不需要thunk这种东西
 ``` javascript
@@ -146,6 +146,7 @@ const fetchPosts = postId => {
 ```
 
 ### redux-saga
+[参考demo](https://github.com/myadomin/react-adomin-temp/tree/master/examples/shopcart-saga)
 * call(fn, ...args) 阻塞，fork(fn, ...args) 非阻塞
 * take(acitonType), takeEvery(acitonType, fn), takeLastes(acitonType, fn)
 * put(action)
@@ -158,19 +159,42 @@ const fetchPosts = postId => {
 * ducks模式
 * types是连接dispatch和reducer的唯一key 如何保证不重复
 
-### redux开发工具
-* redux-logger
-* redux-devtools-extension + chrome Redux DevTools, 进行time-travel
-![time-travel](./assets/time-travel.png)
+### mobx
+[参考demo](https://github.com/myadomin/react-adomin-temp/tree/master/examples/todos-mobx)
+* 多个store，每个store里有
+  * @observer 类似state概念
+  * @action action概念
+  * @computed computed概念
+  * @autorun 类似watch概念
+* 通过装饰器注入`@inject('todosStore') @observer`到react类里面，this.props.todosStore调用action state
+``` javascript
+@inject('todosStore')
+@observer
+class AddTodo extends Component {
+  constructor (props, context) {
+  }
+  render () {
+    const { todosStore } = this.props
+    return (
+      <div>
+        // this.props.todosStore调用action changeAddInputValue addInputValue，
+        // 调用state addInputValue
+        <input type="text" onChange={(e) => todosStore.changeAddInputValue(e.target.value)} value={todosStore.addInputValue} />
+        <button onClick={() => todosStore.addTodo(todosStore.addInputValue)}>Add todo</button>
+      </div>
+    )
+  }
+}
+```
 
 ### vuex与redux全家桶比较
 ##### 大致类比
-|  | vuex | redux全家桶 |
-|---|---|---|
-| actions | action暴露了dispatch及rootStore，可以直接在里面异步操作<br/>所以不需要redux-thunk | actionCreator(redux-thunk) |
-| mutations | 可以随便改state不强制immutable | reducers函数，强制immutable否则不刷新界面 |
-| state | Vue对象注入了store，在组件里直接拿 | 通过combineReducer组织state数据结构<br>为了在组件里dispatch和拿state需要react-redux |
-| modules | 带modules方便组织文件结构 | 按业务分，按类型分，ducks，要保证types唯一性 |
+|  | vuex | redux全家桶 | mobx |
+|---|---|---|---|
+| actions | action暴露了dispatch及rootStore，可以直接在里面异步操作<br/>所以不需要redux-thunk | actionCreator(redux-thunk) | @action:action方法里直接改state，装饰器@inject(store)后组件通过this.props.store直接调action
+| mutations | 可以随便改state不强制immutable | reducers函数，强制immutable否则不刷新界面 | 没有
+| state | Vue对象注入了store，在组件里直接拿 | 通过combineReducer组织state数据结构<br>为了在组件里dispatch和拿state需要react-redux | @state:装饰器@inject(store)后组件通过this.props.store直接拿state
+| modules | 带modules方便组织文件结构 | 按业务分，按类型分，ducks，要保证types唯一性 | 无
 ##### 对比
 * redux强调必须按dispatch(actionCreator)->触发reducer->产生新state的flux流程，要改state必须dispatch，虽然麻烦但是规矩清晰易懂，结合开发工具一定能time-travel调试。
 * vuex采用配置式 actions mutations state 某些不写也可以，但是为什么最佳实践是不嫌麻烦都写？因为
@@ -178,18 +202,19 @@ const fetchPosts = postId => {
   * 只写mutations和state: mutations必须是同步逻辑(因为开发工具time-travel及快照的前提是这个，否则调试不了vuex)，所以异步逻辑只有写在组件里，降低了复用性。
   * 只写actions和state: 没有mutations就没有开发工具快照time-travel无法调试
   * actions封装异步逻辑及组合actions高内聚，mutations同步逻辑改变state用于vuex工具调试，state记录状态
+* mobx通过装饰器@inject(store)到组件后，组件里通过this.props.store直接调action及拿state
 
 
 ### react建议学习路线
 * react基础语法，css-in-js (vue有style scope)
 * react-router-dom (对应vue-router)
 * redux->react-redux->redux-thunk/redux-saga (对应vuex)
-* mobx (替换redux全家桶)
+* mobx (可替换redux全家桶)
 * reslect->normalizr->immutable (vue只有normalizr)
-* 进阶
-  * 读Ant Design 学习react如何封装UI组件
-  * 读dva框架 封装了react全家桶，学习如何组织react全家桶 
-  * 读Ant Design Pro 基于dva处理中后台业务
+* ant
+  * Ant Design react封装UI组件
+  * dva->umi 封装了react全家桶，组织react全家桶 
+  * Ant Design Pro 基于umi的中后台业务框架
 
 
 
