@@ -17,6 +17,7 @@ app.all('*', function(req, res, next) {
 // 跨域的header头上可以附带cookie
 axios.defaults.withCredentials = true
 ```
+* [demo地址](https://github.com/myadomin/react-adomin-temp/tree/master/examples/corsCookie)
 * demo使用
   * `npm run frontend` 启动前端服务器 地址localhost:4000
   * `npm run server` 启动后端服务器 地址localhost:3000
