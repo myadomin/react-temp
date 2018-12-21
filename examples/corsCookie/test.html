@@ -1,0 +1,55 @@
+<html>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <body>
+    <p>同域请求</p>
+    <p><button id="login">登录获取cookie</button></p>
+    <p><button id="other">其他的任意请求</button></p>
+    <p><button id="clear">清空cookie</button></p>
+    <br><br>
+    <p>跨域请求</p>
+    <p><button id="login1">登录获取cookie</button></p>
+    <p><button id="other1">其他的任意请求</button></p>
+    <p><button id="clear1">清空cookie</button></p>
+    <br><br>
+    <p>请求返回</p>
+    <p id="res"></p>
+  </body>
+  <script>
+    const oRes = document.getElementById('res')
+    // 同域请求 请求到frontend.js 
+    document.getElementById('login').addEventListener('click', () => {
+      axios.get('http://localhost:4000/login').then(res => {
+        oRes.innerHTML = res.data
+      })
+    })
+    document.getElementById('other').addEventListener('click', () => {
+      axios.get('http://localhost:4000/aa').then(res => {
+        oRes.innerHTML = res.data
+      })
+    })
+    document.getElementById('clear').addEventListener('click', () => {
+      axios.get('http://localhost:4000/clear').then(res => {
+        oRes.innerHTML = res.data
+      })
+    })
+
+    // 跨域请求
+    // 跨域的header头上可以附带cookie
+    axios.defaults.withCredentials = true
+    document.getElementById('login1').addEventListener('click', () => {
+      axios.get('http://localhost:3000/login').then(res => {
+        oRes.innerHTML = res.data
+      })
+    })
+    document.getElementById('other1').addEventListener('click', () => {
+      axios.get('http://localhost:3000/aa').then(res => {
+        oRes.innerHTML = res.data
+      })
+    })
+    document.getElementById('clear1').addEventListener('click', () => {
+      axios.get('http://localhost:3000/clear').then(res => {
+        oRes.innerHTML = res.data
+      })
+    })
+  </script>
+</html>
