@@ -1,9 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
-
-function resolve (relatedPath) {
-  return path.join(__dirname, relatedPath)
-}
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const resolve = (relatedPath) => path.resolve(__dirname, relatedPath)
 
 const webpackConfigBase = {
   entry: {
@@ -13,9 +11,7 @@ const webpackConfigBase = {
     main: resolve('../src/main.js')
   },
   output: {
-    path: resolve('../dist'),
-    // webpack-dev-server不能用chunkhash 可以用hash 所以这里做个判断
-    filename: process.env.NODE_ENV === 'dev' ? '[name].[hash].js' : '[name].[chunkhash].js'
+    path: resolve('../dist')
   },
   resolve: {
     extensions: ['.js', '.json'],
@@ -64,6 +60,11 @@ const webpackConfigBase = {
     ]
   },
   plugins: [
+    // 将打包后的资源注入到html文件内
+    new HtmlWebpackPlugin({
+      template: resolve('../src/index.html'),
+      mapConfig: 'http://56.32.3.21/config/qdkjdsj_map_config.js'
+    }),
     // https://www.jb51.net/article/131865.htm
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor']

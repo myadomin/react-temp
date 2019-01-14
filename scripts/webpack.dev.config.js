@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const webpackConfigBase = require('./webpack.base.config')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const WebpackNotifierPlugin = require('webpack-notifier')
 
@@ -10,17 +9,18 @@ function resolve (relatedPath) {
   return path.join(__dirname, relatedPath)
 }
 const webpackConfigDev = {
+  output: {
+    // webpack-dev-server不能用chunkhash 只能用hash
+    filename: '[name].[hash].js',
+    // 本地开发 path都是根路径localhost:8100
+    publicPath: '/'
+  },
   plugins: [
     new webpack.DefinePlugin({
       // react源码入口会判断process.env.NODE_ENV是development还是production做优化处理
       // 所以DefinePlugin 定义 process.env.NODE_ENV 让react源码及业务组件可以读取到process.env.NODE_ENV
       'process.env.NODE_ENV': JSON.stringify('development'),
       IS_DEVELOPMETN: true
-    }),
-    // 将打包后的资源注入到html文件内
-    new HtmlWebpackPlugin({
-      template: resolve('../src/index.html'),
-      mapConfig: 'http://41.196.99.30/tgram-pgisbase/config/qdkjdsj_map_config.js'
     }),
     // 控制台打印
     new FriendlyErrorsWebpackPlugin({
@@ -35,7 +35,7 @@ const webpackConfigDev = {
         // 通过参数options可以得到options.dev=true
         // 4 上面的 webpack.DefinePlugin 定义的 IS_DEVELOPMETN 在这里拿不到
         // DefinePlugin 定义的东西只能在业务组件里面拿 相当于在main.js等业务组件里定义了一个IS_DEVELOPMETN全局变量
-        messages: [`PROXY_ENV: ${process.env.PROXY_ENV} -- NODE_ENV: ${process.env.NODE_ENV}`],
+        messages: [`PROXY_ENV: ${process.env.PROXY_ENV}`],
         notes: ['Some additionnal notes to be displayed unpon successful compilation']
       },
       onErrors: function (severity, errors) {

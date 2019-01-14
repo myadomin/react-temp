@@ -9,7 +9,6 @@ module.exports = {
     // antd
     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }],
     "transform-runtime",
-    "transform-decorators-legacy",
-    "styled-jsx/babel"
+    "transform-decorators-legacy"
   ]
 }
