@@ -36,18 +36,18 @@ class App extends Component {
             selectedKeys={[current]}
             defaultOpenKeys={['1']}
           >
-            <Menu.Item key="mock">
-              <Link to="/mock" replace>
-                <Icon type="desktop" />
-                <span className="nav-text">mock</span>
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="mobx">
-              <Link to="/mobx" replace>
-                <Icon type="desktop" />
-                <span className="nav-text">mobx</span>
-              </Link>
-            </Menu.Item>
+            <Menu.SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
+              <Menu.Item key="mock">
+                <Link to="/mock" replace>
+                  <span className="nav-text">mock</span>
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="mobx">
+                <Link to="/mobx" replace>
+                  <span className="nav-text">mobx</span>
+                </Link>
+              </Menu.Item>
+            </ Menu.SubMenu>
           </Menu>
         </Sider>
         <Layout>
