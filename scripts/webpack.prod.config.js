@@ -5,10 +5,6 @@ const merge = require('webpack-merge')
 const webpackConfigBase = require('./webpack.base.config')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-function resolve (relatedPath) {
-  return path.join(__dirname, relatedPath)
-}
-
 const webpackConfigProd = {
   output: {
     // 必须用chunkhash 否则manifest每次打包后hash都会变化就无法缓存了

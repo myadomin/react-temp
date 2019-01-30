@@ -6,7 +6,7 @@ const resolve = (relatedPath) => path.resolve(__dirname, relatedPath)
 const webpackConfigBase = {
   entry: {
     // vendor
-    vendor: ['react', 'react-dom', 'mobx', 'mobx-react', 'antd'],
+    vendor: ['react', 'react-dom', 'mobx', 'mobx-react', 'antd', 'babel-polyfill'],
     // 入口文件
     main: resolve('../src/main.js')
   },
@@ -62,8 +62,7 @@ const webpackConfigBase = {
   plugins: [
     // 将打包后的资源注入到html文件内
     new HtmlWebpackPlugin({
-      template: resolve('../src/index.html'),
-      mapConfig: 'http://56.32.3.21/config/qdkjdsj_map_config.js'
+      template: resolve('../src/index.html')
     }),
     // https://www.jb51.net/article/131865.htm
     new webpack.optimize.CommonsChunkPlugin({

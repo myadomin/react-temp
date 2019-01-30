@@ -5,9 +5,6 @@ const webpackConfigBase = require('./webpack.base.config')
 var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const WebpackNotifierPlugin = require('webpack-notifier')
 
-function resolve (relatedPath) {
-  return path.join(__dirname, relatedPath)
-}
 const webpackConfigDev = {
   output: {
     // webpack-dev-server不能用chunkhash 只能用hash
@@ -58,7 +55,7 @@ const webpackConfigDev = {
     // necessary for FriendlyErrorsPlugin
     quiet: true,
     proxy: {
-      // '/api/index.php/*': {
+      // '/api/*': {
       //     target: 'http://beeossdev.egtest.cn:7777',
       //     changeOrigin: true
       //     pathRewrite: {
