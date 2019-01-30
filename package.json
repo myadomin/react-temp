@@ -50,8 +50,7 @@
     "webpack-bundle-analyzer": "~2.9.0",
     "webpack-dev-server": "~2.11.0",
     "webpack-merge": "~4.1.1",
-    "webpack-notifier": "^1.6.0",
-    "ws": "^6.0.0"
+    "webpack-notifier": "^1.6.0"
   },
   "dependencies": {
     "antd": "~3.8.0",
