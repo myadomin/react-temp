@@ -43,6 +43,33 @@ const webpackConfigBase = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       },
+      // 除了node_modules(因为antd不能用css module)
+      // {
+      //   test: /\.css$/,
+      //   exclude: [resolve('../node_modules')],
+      //   use: ['style-loader', {
+      //     loader: 'css-loader',
+      //     options: {
+      //       importLoaders: 1,
+      //       // css modules支持
+      //       modules: true,
+      //       localIdentName: '[name]__[local]__[hash:base64:5]'
+      //     }
+      //   }]
+      // },
+      {
+        test: /\.less$/,
+        exclude: [resolve('../node_modules')],
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            // less modules支持
+            modules: true,
+            localIdentName: '[name]__[local]__[hash:base64:5]'
+          }
+        }, 'less-loader']
+      },
       {
         test: /\.styl$/,
         use: ['style-loader', 'css-loader', 'stylus-loader']

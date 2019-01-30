@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Layout, Menu, Icon } from 'antd'
 import { Route, Link, withRouter, Redirect, Switch } from 'react-router-dom'
 import GlobalHeader from './GlobalHeader'
-import './index.styl'
+import styles from './index.less'
 import Mock from '@src/view/mock'
 import Mobx from '@src/view/mobx'
 
@@ -27,9 +27,9 @@ export default class Home extends Component {
           breakpoint="lg"
           collapsedWidth="0"
         >
-          <div className="layout-logo">
-            <img src={imgUrl} className="layout-logoSvg"></img>
-            <h1 className="layout-h1">啊啊啊啊附带</h1>
+          <div className={styles.logo}>
+            <img src={imgUrl} className={styles.logoSvg}></img>
+            <h1 className={styles.name}>啊啊啊啊附带</h1>
           </div>
           <Menu theme="dark" mode="inline"
             selectedKeys={[current]}
