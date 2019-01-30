@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'antd'
-import axios from 'axios'
+import axios from '@src/utils/axios'
 import urls from '@src/config/urls.js'
 
 export default class Home extends Component {
@@ -13,10 +13,11 @@ export default class Home extends Component {
   }
 
   // mock数据
+  // 关闭mock main.js注释掉import mock from '@src/mock'
   getProductAll () {
     axios.get(urls.product_all).then(res => {
-      console.log(res.data)
-      this.setState({productAll: res.data})
+      console.log(res)
+      this.setState({productAll: res})
     })
   }
 
