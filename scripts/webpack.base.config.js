@@ -5,9 +5,7 @@ const resolve = (relatedPath) => path.resolve(__dirname, relatedPath)
 
 const webpackConfigBase = {
   entry: {
-    // vendor
-    vendor: ['react', 'react-dom', 'mobx', 'mobx-react', 'antd', 'babel-polyfill'],
-    // 入口文件
+    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'antd', 'babel-polyfill'],
     main: resolve('../src/main.js')
   },
   output: {
@@ -43,20 +41,6 @@ const webpackConfigBase = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       },
-      // 除了node_modules(因为antd不能用css module)
-      // {
-      //   test: /\.css$/,
-      //   exclude: [resolve('../node_modules')],
-      //   use: ['style-loader', {
-      //     loader: 'css-loader',
-      //     options: {
-      //       importLoaders: 1,
-      //       // css modules支持
-      //       modules: true,
-      //       localIdentName: '[name]__[local]__[hash:base64:5]'
-      //     }
-      //   }]
-      // },
       {
         test: /\.less$/,
         exclude: [resolve('../node_modules')],
@@ -64,15 +48,11 @@ const webpackConfigBase = {
           loader: 'css-loader',
           options: {
             importLoaders: 1,
-            // less modules支持
+            // less modules
             modules: true,
             localIdentName: '[name]__[local]__[hash:base64:5]'
           }
         }, 'less-loader']
-      },
-      {
-        test: /\.styl$/,
-        use: ['style-loader', 'css-loader', 'stylus-loader']
       },
       {
         test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
@@ -87,7 +67,6 @@ const webpackConfigBase = {
     ]
   },
   plugins: [
-    // 将打包后的资源注入到html文件内
     new HtmlWebpackPlugin({
       template: resolve('../src/index.html')
     }),
@@ -98,7 +77,7 @@ const webpackConfigBase = {
     // 如果不配置下面 只有main.js和vendor.js 每次修改代码后打包 这两个js的chunkhash值都变化了 不利于vendor.js的缓存
     // 配置了下面 每次修改代码后打包 只变化main mainfest的chunkhash, vendor chunkhash不变化 可以缓存vendor
     // filename和chunkFilename必须使用chunkhash才能让以上规则生效
-    // 开发环境webpack-dev-server必须用的hash不能用chunkhash 所以生产环境以上规则不生效
+    // 开发环境webpack-dev-server必须用的hash不能用chunkhash 所以开发环境以上规则不生效
     new webpack.optimize.CommonsChunkPlugin({
       // vendor包括的是一些不常变化的库
       // manifest再抽出此次打包过程中vendor这些库变化的部分(一般都很小)

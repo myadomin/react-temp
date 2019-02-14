@@ -6,19 +6,28 @@ import App from '@src/view/app'
 import '@src/style/base.css'
 import { LocaleProvider } from 'antd'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
-import { Provider } from 'mobx-react'
 import { HashRouter } from 'react-router-dom'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+import reducer from '@src/store/reducer'
 // 打开 mock数据，关闭 请求服务器数据
 import mock from '@src/mock'
-import counterStore from './stores/counterStore'
 
-const stores = {
-  counterStore
+const middleware = [ thunk ]
+if (process.env.NODE_ENV !== 'production') {
+  middleware.push(createLogger())
 }
+
+const store = createStore(
+  reducer,
+  applyMiddleware(...middleware)
+)
 
 ReactDOM.render(
   <LocaleProvider locale={zhCN}>
-    <Provider {...stores}>
+    <Provider store={store}>
       <HashRouter>
         <App />
       </HashRouter>

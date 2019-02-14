@@ -4,7 +4,7 @@ import { Route, Link, withRouter, Redirect, Switch } from 'react-router-dom'
 import GlobalHeader from './GlobalHeader'
 import styles from './index.less'
 import Mock from '@src/view/mock'
-import Mobx from '@src/view/mobx'
+import Redux from '@src/view/redux'
 
 export default class Home extends Component {
   constructor (props, context) {
@@ -41,9 +41,9 @@ export default class Home extends Component {
                   <span className="nav-text">mock</span>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="mobx">
-                <Link to="/mobx" replace>
-                  <span className="nav-text">mobx</span>
+              <Menu.Item key="redux">
+                <Link to="/redux" replace>
+                  <span className="nav-text">redux</span>
                 </Link>
               </Menu.Item>
             </ Menu.SubMenu>
@@ -58,7 +58,7 @@ export default class Home extends Component {
               {/* 加了Switch从上往下匹配 只匹配一次 /路由写最后 如果输入/abc 都没匹配到就匹配到最后的/路由 */}
               <Switch>
                 <Route path="/mock" component={Mock} />
-                <Route path="/mobx" component={Mobx} />
+                <Route path="/redux" component={Redux} />
                 <Route path="/" render={() => <Redirect to="/mock"/>} />
               </Switch>
             </div>
