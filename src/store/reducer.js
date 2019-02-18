@@ -4,6 +4,7 @@ const incrementCount = (state = { count: 0 }, action) => {
   switch (action.type) {
     case 'incrementCount':
       return {
+        ...state,
         count: state.count + action.num
       }
     // case 'test':
