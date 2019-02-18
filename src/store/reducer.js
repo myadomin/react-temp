@@ -13,7 +13,7 @@ const incrementCount = (state = { count: 0 }, action) => {
   }
 }
 
-export default incrementCount
-// export default combineReducers({
-//   incrementCount
-// })
+// export default incrementCount
+export default combineReducers({
+  incrementCount
+})
