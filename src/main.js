@@ -11,7 +11,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import reducer from '@src/store/reducer'
+import reducer from '@src/store'
 // 打开 mock数据，关闭 请求服务器数据
 import mock from '@src/mock'
 

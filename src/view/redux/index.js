@@ -1,25 +1,28 @@
 import React, { Component } from 'react'
 import { Button } from 'antd'
 import { connect } from 'react-redux'
-import { incrementCount } from '@src/store/action'
+import { actions as appleActions } from '@src/store/modules/apple'
+import { actions as orangeActions } from '@src/store/modules/orange'
 
-class Redux extends Component {
+class ReduxTest extends Component {
   constructor (props, context) {
     super(props)
     this.state = {}
   }
 
-  incrementCount = () => {
-    this.props.incrementCount(1)
-  }
-
   render () {
-    const { count } = this.props
+    const { appleCount, orangeCount, incrementAppleCount, incrementOrangeCount } = this.props
     return (
       <div className="home-wrap">
         <div>redux测试</div>
-        <Button type="primary" onClick={this.incrementCount}>incrementCount</Button>
-        <span>{ count }</span>
+        <div style={{ margin: '10px 0' }}>
+          <Button type="primary" onClick={() => incrementAppleCount(1)}>incrementAppleCount</Button>
+          <span>{ appleCount }</span>
+        </div>
+        <div>
+          <Button type="primary" onClick={() => incrementOrangeCount(1)}>incrementOrangeCount</Button>
+          <span>{ orangeCount }</span>
+        </div>
       </div>
     )
   }
@@ -27,14 +30,18 @@ class Redux extends Component {
 
 const mapStateToProps = state => {
   return {
-    count: state.incrementCount.count
+    appleCount: state.apple.count,
+    orangeCount: state.orange.count
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    incrementCount: (num) => {
-      dispatch(incrementCount(num))
+    incrementAppleCount: (count) => {
+      dispatch(appleActions.incrementCount(count))
+    },
+    incrementOrangeCount: (count) => {
+      dispatch(orangeActions.incrementCount(count))
     }
   }
 }
@@ -42,4 +49,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Redux)
+)(ReduxTest)
