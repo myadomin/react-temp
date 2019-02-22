@@ -3,8 +3,20 @@ import { Layout, Menu, Icon } from 'antd'
 import { Route, Link, withRouter, Redirect, Switch } from 'react-router-dom'
 import GlobalHeader from './GlobalHeader'
 import styles from './index.less'
+import Loadable from 'react-loadable'
+import Loading from '@src/view/base/loading'
 import Mock from '@src/view/mock'
 import Redux from '@src/view/redux'
+
+// 路由懒加载
+// const Mock = Loadable({
+//   loader: () => import('@src/view/mock'),
+//   loading: Loading
+// })
+// const Redux = Loadable({
+//   loader: () => import('@src/view/redux'),
+//   loading: Loading
+// })
 
 export default class Home extends Component {
   constructor (props, context) {
