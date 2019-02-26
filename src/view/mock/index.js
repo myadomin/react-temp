@@ -12,7 +12,7 @@ export default class Home extends Component {
   }
 
   // mock数据
-  getProductAll () {
+  getProductAll = () => {
     axios.get(urls.product_all).then(res => {
       this.setState({productAll: res})
     })
@@ -23,7 +23,7 @@ export default class Home extends Component {
     return (
       <div className="home-wrap">
         <div>mock数据</div>
-        <Button type="primary" onClick={this.getProductAll.bind(this)}>getProductAll - mock</Button>
+        <Button type="primary" onClick={this.getProductAll}>getProductAll - mock</Button>
         <ul>
           {productAll.map(obj => {
             return <li key={obj.id}>{obj.title}</li>
