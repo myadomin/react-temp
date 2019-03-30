@@ -9,3 +9,6 @@
 ## 建议做
 * nginx开启gzip压缩
 * nginx设置Cache-Control: max-age及Etag
+
+## mock
+* `main.js`中`import mock from '@src/mock'`
