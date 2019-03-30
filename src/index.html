@@ -4,8 +4,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>react-temp</title>
+  <style>
+    #pre-loading{
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 10000;
+      /* 由于此时还没进入webpack打包 所以这个background url走不了url-loader 只能用服务器图片 */
+      background: #fff url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553925744145&di=ac702219aee1971dc0d8f0d427412dfe&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0152395be39c37a80121ab5d479b6c.gif') no-repeat center center;
+    }
+  </style>
 </head>
 <body>
+  <div id="pre-loading"></div>
   <div class="root" id="root"></div>
 </body>
 </html>

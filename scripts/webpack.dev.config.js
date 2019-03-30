@@ -8,9 +8,7 @@ const WebpackNotifierPlugin = require('webpack-notifier')
 const webpackConfigDev = {
   output: {
     // webpack-dev-server不能用chunkhash 只能用hash
-    filename: '[name].[hash].js',
-    // 本地开发 path都是根路径localhost:8100
-    publicPath: '/'
+    filename: '[name].[hash].js'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -22,8 +20,7 @@ const webpackConfigDev = {
     // 控制台打印
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        // 通过 npm script cross-env NODE_ENV=abc 传参数
-        // 这个参数只能在webpack配置中读取到
+        // 通过 npm script cross-env NODE_ENV=abc 传参数，这个参数只能在webpack配置中读取到
         messages: [`PROXY_ENV: ${process.env.PROXY_ENV}`],
         notes: ['Some additionnal notes to be displayed unpon successful compilation']
       },
@@ -43,8 +40,8 @@ const webpackConfigDev = {
     host: 'localhost',
     port: 8200,
     open: true,
-    // necessary for FriendlyErrorsPlugin
     quiet: true,
+    // 本地开发跨域请求设置
     proxy: {
       // '/api/*': {
       //     target: 'http://beeossdev.egtest.cn:7777',
