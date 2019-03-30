@@ -60,7 +60,7 @@ const webpackConfigBase = {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 1000,
+            limit: 10000,
             // prod的publicPath是'./', 所以build后所有的img src、background url等图片引用目录变为./
             // 例如开发时background: url('../../assets/logo.png')，打包后url会变成./static/logo.png
             name: 'static/[hash:8].[name].[ext]'
