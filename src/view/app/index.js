@@ -10,6 +10,11 @@ class App extends Component {
     }
   }
 
+  componentWillMount () {
+    // 去掉进入index.html形成的pre-loading
+    // document.getElementById('pre-loading').style.display = 'none'
+  }
+
   render () {
     return (
       <div className="app">
