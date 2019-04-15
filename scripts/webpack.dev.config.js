@@ -15,7 +15,7 @@ const webpackConfigDev = {
       // react源码入口会判断process.env.NODE_ENV是development还是production做优化处理
       // 定义process.env.NODE_ENV让react源码读取 这里的process.env.NODE_ENV只可以在react源码及项目业务组件中读取
       'process.env.NODE_ENV': JSON.stringify('development'),
-      IS_DEVELOPMETN: true
+      SERVER: JSON.stringify('localhost')
     }),
     // 控制台打印
     new FriendlyErrorsWebpackPlugin({
@@ -27,12 +27,6 @@ const webpackConfigDev = {
       onErrors: function (severity, errors) {
       }
     })
-    // 编译完成动态通知是否有error
-    // new WebpackNotifierPlugin({
-    //   title: 'Notify',
-    //   excludeWarnings: true,
-    //   skipFirstNotification: true
-    // })
   ],
   // dev环境用eval-source-map prod环境用source-map
   devtool: 'eval-source-map',

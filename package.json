@@ -6,7 +6,9 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env PROXY_ENV=dev webpack-dev-server --hot --config ./scripts/webpack.dev.config.js",
-    "build": "rimraf dist && webpack --config ./scripts/webpack.prod.config.js --progress"
+    "build": "npm run build-test",
+    "build-test": "rimraf dist && webpack --config ./scripts/webpack.prod.config.js --progress --env=testserver",
+    "build-www": "rimraf dist && webpack --config ./scripts/webpack.prod.config.js --progress --env=wwwserver"
   },
   "author": "adomin",
   "babel": {

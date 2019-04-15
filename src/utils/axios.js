@@ -34,8 +34,6 @@ axios.interceptors.response.use(response => {
   //   message.error(JSON.stringify(response.data))
   //   // throw后就会走到catch
   //   throw response.data
-  //   // Promise.reject好像还是走then
-  //   // Promise.reject(response.data)
   // }
   return response.data
 }, error => {
