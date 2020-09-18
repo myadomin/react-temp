@@ -6,6 +6,7 @@ import styles from './index.less'
 import Loadable from 'react-loadable'
 import Mock from '@src/view/mock'
 import Redux from '@src/view/redux'
+import Hooks from '@src/view/hooks'
 
 // 路由懒加载
 // const Mock = Loadable({
@@ -57,6 +58,11 @@ export default class Home extends Component {
                   <span className="nav-text">redux</span>
                 </Link>
               </Menu.Item>
+              <Menu.Item key="hooks">
+                <Link to="/hooks" replace>
+                  <span className="nav-text">hooks</span>
+                </Link>
+              </Menu.Item>
             </ Menu.SubMenu>
           </Menu>
         </Sider>
@@ -70,6 +76,7 @@ export default class Home extends Component {
               <Switch>
                 <Route path="/mock" component={Mock} />
                 <Route path="/redux" component={Redux} />
+                <Route path="/hooks" component={Hooks} />
                 <Route path="/" render={() => <Redirect to="/mock"/>} />
               </Switch>
             </div>
