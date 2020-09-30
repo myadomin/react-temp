@@ -21,8 +21,8 @@ export default class Home extends Component {
   render () {
     const { productAll } = this.state
     return (
-      <div className="home-wrap">
-        <div>mock数据</div>
+      <div className="home-wrap mock">
+        <div className="test">mock数据</div>
         <Button type="primary" onClick={this.getProductAll}>getProductAll - mock</Button>
         <ul>
           {productAll.map(obj => {

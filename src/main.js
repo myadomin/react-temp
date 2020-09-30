@@ -4,8 +4,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '@src/view/app'
 import '@src/style/base.css'
-import { LocaleProvider } from 'antd'
-import zhCN from 'antd/lib/locale-provider/zh_CN'
+import { ConfigProvider } from 'antd'
+import zhCN from 'antd/es/locale/zh_CN'
 import { HashRouter } from 'react-router-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -26,12 +26,12 @@ const store = createStore(
 )
 
 ReactDOM.render(
-  <LocaleProvider locale={zhCN}>
+  <ConfigProvider locale={zhCN}>
     <Provider store={store}>
       <HashRouter>
         <App />
       </HashRouter>
     </Provider>
-  </LocaleProvider>,
+  </ConfigProvider>,
   document.getElementById('root')
 )
