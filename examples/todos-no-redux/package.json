@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "react-scripts": "^1.1.4"
   },
   "dependencies": {
