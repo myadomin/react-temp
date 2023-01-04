@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "lodash": "^4.17.10",
-    "react-scripts": "^1.1.4"
+    "react-scripts": "^5.0.1"
   },
   "dependencies": {
     "prop-types": "^15.6.1",
